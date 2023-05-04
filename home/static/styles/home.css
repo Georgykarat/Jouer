@@ -19,3 +19,48 @@ body, html {
 body {
     background-color: rgb(255,255,255);
 }
+header {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    background-color: #001897;
+}
+.header__cnt-with-logo {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+}
+h1 {
+    color: azure;
+    font-family: "ComissionerEB";
+    font-size: 40px;
+}
+.header__cnt-with-reg-login {
+    display: flex;
+    justify-content: space-between;
+    width: 25%;
+    align-items: center;
+}
+.header__login-btn {
+    text-align: center;
+    align-items: center;
+    color: azure;
+    border: 1px solid azure;
+    border-radius: 15px;
+    padding: 5px 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.header__reg-btn {
+    text-align: center;
+    align-items: center;
+    color: azure;
+    border: 1px solid azure;
+    border-radius: 15px;
+    padding: 5px 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
