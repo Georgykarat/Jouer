@@ -1,0 +1,27 @@
+@font-face{
+    font-family: ComissionerEL;
+    font-style: normal;
+    src: url('../fonts/Commissioner/Commissioner-ExtraLight.ttf');
+  }
+  
+  @font-face{
+    font-family: ComissionerM;
+    font-style: bold;
+    src: url('../fonts/Commissioner/Commissioner-Medium.ttf');
+  }
+  
+  @font-face{
+    font-family: ComissionerR;
+    font-style: bold;
+    src: url('../fonts/Commissioner/Commissioner-Regular.ttf');
+  }
+  @font-face{
+    font-family: ComissionerB;
+    font-style: bold;
+    src: url('../fonts/Commissioner/Commissioner-Bold.ttf');
+  }
+  @font-face{
+    font-family: ComissionerEB;
+    font-style: bold;
+    src: url('../fonts/Commissioner/Commissioner-ExtraBold.ttf');
+  }

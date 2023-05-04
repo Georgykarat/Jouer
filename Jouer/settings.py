@@ -75,6 +75,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Jouer.wsgi.application'
 
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
