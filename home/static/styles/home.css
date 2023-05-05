@@ -17,7 +17,7 @@ body, html {
     width: 100%;
 }
 body {
-    background-color: rgb(255,255,255);
+    background-color: #0c0c0c;
 }
 header {
     display: flex;
@@ -25,7 +25,10 @@ header {
     justify-content: center;
     align-items: center;
     height: 60px;
-    background-color: #001897;
+    background-color: #070707;
+    /* position: fixed; */
+    /* Test */
+    /* border-bottom: 1px solid #ffffff;  */
 }
 .header__cnt-with-logo {
     display: flex;
@@ -35,12 +38,12 @@ header {
 }
 h1 {
     color: azure;
-    font-family: "ComissionerEB";
+    font-family: "ComissionerB";
     font-size: 40px;
 }
 .header__cnt-with-reg-login {
     display: flex;
-    justify-content: space-between;
+    justify-content: right;
     width: 25%;
     align-items: center;
 }
@@ -48,19 +51,154 @@ h1 {
     text-align: center;
     align-items: center;
     color: azure;
-    border: 1px solid azure;
-    border-radius: 15px;
     padding: 5px 10px;
-    font-size: 20px;
+    font-size: 15px;
     cursor: pointer;
+    font-family: "ComissionerR";
 }
 .header__reg-btn {
     text-align: center;
     align-items: center;
     color: azure;
-    border: 1px solid azure;
-    border-radius: 15px;
     padding: 5px 10px;
-    font-size: 20px;
+    font-size: 15px;
     cursor: pointer;
+    font-family: "ComissionerR";
+}
+main {
+    display: block;
+    width: 100%;
+    background-color: #070707;
+    height: 200vh;
+}
+.main__cnt {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 10vh 0;
+}
+.main__cnt_center {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+}
+.main__cnt_center-left {
+    display: flex;
+    min-width: 60%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.main__h2 {
+    font-family: "ComissionerEL";
+    color: azure;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 15px;
+}
+.main__h2_description {
+    font-family: "ComissionerEL";
+    color: azure;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-top: 15px;
+}
+.main__h2-line {
+    align-items: left;
+    align-self: self-start;
+}
+.main__cnt_center-right {
+    display: flex;
+    min-width: 40%;
+    justify-content: center;
+    align-items: center;
+}
+.main__cnt_center-right-cnt {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.main_cnt_right-cnt_bg {
+    min-width: 200px;
+    min-height: 130px;
+    border-radius: 15px;
+    display: block;
+    position: relative;
+    left: 0px;
+    cursor: pointer;
+    transition: .5s;
+    margin: 10px 100%;
+}
+.main_cnt_right-cnt_bg:hover {
+    left: -30px;
+    transition: .5s;
+}
+.main_cnt_boardgame_1cnt {
+    display: flex;
+    justify-content: space-between;
+    width: 180px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.main_cnt_bg_icon {
+    width: 40px;
+    height: 40px;
+    background-color: azure;
+    border-radius: 40px;
+    display: flex;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.main_cnt_bg_time {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border-radius: 10px;
+    display: flex;
+    margin-left: 0;
+    text-align: center;
+    font-family: "ComissionerB";
+    font-size: 14px;
+
+}
+.main_cnt_bg_title {
+    color: #070707;
+    font-size: 20px;
+    font-family: "ComissionerB";
+    width: 100%;
+}
+.main_cnt_bg_type {
+    color: #070707;
+    font-size: 10px;
+    font-family: "ComissionerB";
+    width: 100%;
+    border-left: 1px solid black;
+    padding-left: 5px;
+}
+.main_cnt_bg_params {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    width: 100%;
+    margin-top: 5px;
+}
+.main_cnt_bg_params_complexity {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+.main_cnt_bg_params_complexity_span {
+    color: #070707;
+    font-family: "ComissionerB";
+    font-size: 8px;
 }

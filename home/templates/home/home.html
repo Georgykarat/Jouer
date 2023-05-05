@@ -19,11 +19,34 @@
   src: url({% static 'css/Lemon Milk Pro Ultra Light.otf' %});
 }
     </style> -->
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+          width: 7px;
+        }
+        
+        /* Track */
+        ::-webkit-scrollbar-track {
+          background: #00000042; 
+        }
+         
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+          background: #dfdfdf7c;
+          border-radius: 20px;
+          margin: 2px; 
+        }
+        
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+          background: #555; 
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="header__cnt-with-logo">
-            <h1>Jouer</h1>
+            <h1>Jouer.</h1>
             <div class="header__cnt-with-reg-login">
                 <div class="header__login-btn">Вход</div>
                 <div class="header__reg-btn">Регистрация</div>
@@ -31,7 +54,84 @@
         </div>
     </header>
     <main>
-        
+        <div class="main__cnt">
+            <div class="main__cnt_center">
+                <div class="main__cnt_center-left">
+                    <h2 class="main__h2">Найди игроков</h2>
+                    <!-- <hr width="400" size="2" color="azure" class="main__h2-line"/> -->
+                    <div class="main__h2_description"> Для игры в любую настольную игру</div>
+                </div>
+                <div class="main__cnt_center-right">
+                    <div class="main__cnt_center-right-cnt">
+
+                        <div class="main_cnt_right-cnt_bg monopoly" style="background-color: #8fbc72;">
+                            <div class="main_cnt_boardgame_1cnt">
+                                <div class="main_cnt_bg_icon" style="background-image: url({% static 'img/bgs/Monopoly.jpg' %});"></div>
+                                <div class="main_cnt_bg_time">3ч.</div>
+                            </div>
+                            <div class="main_cnt_boardgame_1cnt">
+                                <div class="main_cnt_bg_title">Monopoly</div>
+                                <div class="main_cnt_bg_type">Экономическая стратегия</div>
+                                <div class="main_cnt_bg_params">
+                                    <div class="main_cnt_bg_params_complexity">
+                                        <span class="main_cnt_bg_params_complexity_span">Сложность:&nbsp;</span>
+                                        <img src="{% static 'img/home/star.png' %}" width="10">
+                                    </div>
+                                    <div class="main_cnt_bg_params_complexity">
+                                        <span class="main_cnt_bg_params_complexity_span">Игроки: 6&nbsp;</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="main_cnt_right-cnt_bg monopoly" style="background-color: #71d2ff;">
+                            <div class="main_cnt_boardgame_1cnt">
+                                <div class="main_cnt_bg_icon" style="background-image: url({% static 'img/bgs/Monopoly.jpg' %});"></div>
+                                <div class="main_cnt_bg_time">3ч.</div>
+                            </div>
+                            <div class="main_cnt_boardgame_1cnt">
+                                <div class="main_cnt_bg_title">Каркасон</div>
+                                <div class="main_cnt_bg_type">Экономическая стратегия</div>
+                                <div class="main_cnt_bg_params">
+                                    <div class="main_cnt_bg_params_complexity">
+                                        <span class="main_cnt_bg_params_complexity_span">Сложность:&nbsp;</span>
+                                        <img src="{% static 'img/home/star.png' %}" width="10">
+                                    </div>
+                                    <div class="main_cnt_bg_params_complexity">
+                                        <span class="main_cnt_bg_params_complexity_span">Игроки: 6&nbsp;</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="main_cnt_right-cnt_bg monopoly" style="background-color: #ffd000;">
+                            <div class="main_cnt_boardgame_1cnt">
+                                <div class="main_cnt_bg_icon" style="background-image: url({% static 'img/bgs/Monopoly.jpg' %});"></div>
+                                <div class="main_cnt_bg_time">3ч.</div>
+                            </div>
+                            <div class="main_cnt_boardgame_1cnt">
+                                <div class="main_cnt_bg_title">High Frontier 4 All</div>
+                                <div class="main_cnt_bg_type">Евро</div>
+                                <div class="main_cnt_bg_params">
+                                    <div class="main_cnt_bg_params_complexity">
+                                        <span class="main_cnt_bg_params_complexity_span">Сложность:&nbsp;</span>
+                                        <img src="{% static 'img/home/star.png' %}" width="10">
+                                        <img src="{% static 'img/home/star.png' %}" width="10">
+                                        <img src="{% static 'img/home/star.png' %}" width="10">
+                                        <img src="{% static 'img/home/star.png' %}" width="10">
+                                        <img src="{% static 'img/home/star.png' %}" width="10">
+                                    </div>
+                                    <div class="main_cnt_bg_params_complexity">
+                                        <span class="main_cnt_bg_params_complexity_span">Игроки: 6&nbsp;</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 </body>
 {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/home_media.css' %}"> {% endcomment %}
