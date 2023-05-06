@@ -25,3 +25,14 @@ def signup(request, *args, **kwargs):
     """
     return render(request, 'home/signup.html', {
     })
+
+
+def login(request, *args, **kwargs):
+    """Function to render login page
+    Args:
+        request ([request]): [just request via url]
+    Returns:
+        [render func]: [render login page]
+    """
+    return render(request, 'home/login.html', {
+    })

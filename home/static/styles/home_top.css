@@ -21,6 +21,9 @@ h1 {
     font-family: "ComissionerB";
     font-size: 40px;
 }
+.header__homelink {
+    font-family: "ComissionerB";
+}
 nav {
     display: flex;
     justify-content: center;
