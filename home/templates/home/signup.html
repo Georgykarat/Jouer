@@ -48,7 +48,22 @@
     <main>
         <div class="main__cnt">
             <div class="main__signup_cnt">
-
+                <form method="post" action="" class="main__signup_form">
+                    {% csrf_token %}
+                    <h2>Время зарегистрироваться!</h2>
+                    <div class="main__form_inputcnt">
+                        <label>Электроная почта</label>
+                        <input type="text" class="mail-f">
+                    </div>
+                    <div class="main__form_inputcnt">
+                        <label>Пароль</label>
+                        <input type="password" class="pass-f">
+                    </div>     
+                    <div class="main__form_inputcnt">
+                        <label>Подтвердите пароль</label>
+                        <input type="password" class="pass-f">
+                    </div>              
+                </form>
             </div>
         </div>
     </main>
