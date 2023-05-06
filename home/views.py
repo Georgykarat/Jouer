@@ -16,3 +16,12 @@ def home(request, *args, **kwargs):
     })
 
 
+def signup(request, *args, **kwargs):
+    """Function to render signup page
+    Args:
+        request ([request]): [just request via url]
+    Returns:
+        [render func]: [render signup page]
+    """
+    return render(request, 'home/signup.html', {
+    })

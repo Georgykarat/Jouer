@@ -41,6 +41,31 @@ h1 {
     font-family: "ComissionerB";
     font-size: 40px;
 }
+nav {
+    display: flex;
+    justify-content: center;
+    min-width: 40%;
+}
+.header__nav_ul {
+    display: inline-block;
+    color: azure;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.header__nav_li {
+    display: inline-block;
+    color: grey;
+    font-size: 15px;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: .5s;
+    border-bottom: 1px solid transparent;
+}
+.header__nav_li:hover {
+    color: azure;
+    transition: .5s;
+    border-bottom: 1px solid azure;
+}
 .header__cnt-with-reg-login {
     display: flex;
     justify-content: right;
@@ -68,15 +93,20 @@ h1 {
 main {
     display: block;
     width: 100%;
-    background-color: #070707;
-    height: 200vh;
+    background-image: url(../img/home/home_bg.jpg);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 100vh;
 }
 .main__cnt {
     display: flex;
     width: 100%;
+    height: 100vh;
     justify-content: center;
     align-items: center;
-    margin: 10vh 0;
+    background-color: #070707d8;
+    margin: 0vh 0;
 }
 .main__cnt_center {
     display: flex;
@@ -133,7 +163,7 @@ main {
     left: 0px;
     cursor: pointer;
     transition: .5s;
-    margin: 10px 100%;
+    margin: 10px 50%;
 }
 .main_cnt_right-cnt_bg:hover {
     left: -30px;
