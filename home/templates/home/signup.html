@@ -5,11 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jouer Home Page</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/home_top.css' %}">
-    {% comment %} <script src="{% static 'frameworks/jQueryv3.6.0.min.js' %}"></script>
+    <title>Jouer Sign Up</title>
+    <script src="{% static 'frameworks/jQueryv3.6.0.min.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'styles/fonts.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/home.css' %}"> {% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/home.css' %}">
     <!-- <link rel="stylesheet" type="text/css" href="{% static 'home/css/home.css' %}">
     <script src="{% static 'home/js/jquery-ui.min.js' %}"></script>
     <script src="{% static 'home/js/home.js' %}"></script> -->
@@ -45,23 +44,12 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="header__cnt-with-logo">
-            <h1>Jouer.</h1>
-            <nav class="header__nav">
-                <ul class="header__nav_ul">
-                    <li class="header__nav_li">Концепция</li>
-                    <li class="header__nav_li">Функционал</li>
-                    <li class="header__nav_li">Развитие</li>
-                    <li class="header__nav_li">Инвесторы</li>
-                </ul>
-            </nav>
-            <div class="header__cnt-with-reg-login">
-                <div class="header__login-btn">Вход</div>
-                <div class="header__reg-btn"><a href="signup/">Регистрация</a></div>
-            </div>
+    {% include "home/home_top.html" %}
+    <main>
+        <div class="main__cnt">
+            
         </div>
-    </header>
+    </main>
 </body>
 {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/home_media.css' %}"> {% endcomment %}
 </html>
