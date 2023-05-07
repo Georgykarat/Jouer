@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jouer Feed</title>
+    <script src="{% static 'frameworks/jQueryv3.6.0.min.js' %}"></script>
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+          width: 7px;
+        }
+        
+        /* Track */
+        ::-webkit-scrollbar-track {
+          background: #00000042; 
+        }
+         
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+          background: #dfdfdf7c;
+          border-radius: 20px;
+          margin: 2px; 
+        }
+        
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+          background: #555; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Feed page</h1>
+</body>
+{% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/home_media.css' %}"> {% endcomment %}
+</html>

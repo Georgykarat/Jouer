@@ -1,13 +1,16 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.http.response import JsonResponse
 from django.conf import settings
 from django.utils import timezone
-from home.models import SignUpModel
+from home.models import SignUpModel, CustomUser
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.text import MIMEText
+from django.contrib.auth.hashers import make_password
 from email import encoders
 import random
 import string
@@ -100,6 +103,14 @@ def login(request, *args, **kwargs):
     })
 
 def generate_confcode(request):
+    """
+    The function generates mail confirmation code and sends it to the user
+    Args:
+        request ([request]): [just request via url]
+    Returns:
+        [JsonResponse]: [Json with status 200]
+    
+    """
     if is_ajax(request=request):
         mail_to_reg = request.POST['mail'].lower()
         code = code_generate(6)
@@ -120,3 +131,33 @@ def generate_confcode(request):
             tempuser.save()
             send_email(mail_to_reg, 'Registration code', regcode)
         return JsonResponse({}, status=200)
+    
+
+def check_code(request):
+    """
+    The function checks the code and if it is correct, the user is redirected to the main page
+    Args:
+        request ([request]): [just request via url]
+    Returns:
+        [JsonResponse]: [Json with status 200]
+    
+    """
+    if is_ajax(request=request):
+        mail_to_reg = request.POST['mail'].lower()
+        code_to_reg = request.POST['code'].lower()
+        password = request.POST['password']
+        testuser = SignUpModel.objects.filter(mail=mail_to_reg)
+        if testuser:
+            if (testuser.values_list('code')[0][0]).lower() == code_to_reg:
+                testuser.delete()
+                varhash = make_password(password, None, 'pbkdf2_sha1')
+                newuser = User(username=mail_to_reg.lower(), password=varhash)
+                newuser.save()
+                newuser = CustomUser(user=newuser, email=mail_to_reg.lower())
+                newuser.save()
+                login(request, newuser)
+                return HttpResponseRedirect('../feed')
+            else:
+                return JsonResponse({}, status=400)
+        else:
+            return JsonResponse({}, status=400)

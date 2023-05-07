@@ -3,7 +3,9 @@ $(function(){
     var Mail = $('.mail-f');
     var Password = $('.pass-f');
     var ConfPass = $('.pass-f-con');
+    var VerCode = $('.code-f');
     var FirstButton = $('.main__form_submit_button');
+    var SecondButton = $('.main__form_submit_button2');
     var Body = $('.main__signup_cnt');
     var RegForm1 = $('.main__signup_cnt');
     var RegForm2 = $('.main__signup_cnt2');
@@ -138,6 +140,26 @@ $(function(){
             Password.css('border-color','red');
         } else if (Password.val() != ConfPass.val()) {
             ConfPass.css('border-color','red');
+        }
+    });
+    SecondButton.on('click', function(){
+        code = VerCode.val();
+        if (code != "") {
+            SecondButton.text('Please wait...')
+            $.ajax({
+                type: 'POST',
+                url: 'verify/',
+                data: {
+                    csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                    code: code,
+                    mail: ourmail,
+                    password: pass,
+                },
+                success: function() {
+                    // RegForm1.css('display', 'none');
+                    // RegForm2.css('display', 'flex');
+                }
+            });
         }
     });
 });
