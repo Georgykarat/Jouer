@@ -92,7 +92,7 @@ def signup(request, *args, **kwargs):
     })
 
 
-def login(request, *args, **kwargs):
+def signin(request, *args, **kwargs):
     """Function to render login page
     Args:
         request ([request]): [just request via url]
@@ -156,7 +156,7 @@ def check_code(request):
                 newuser = CustomUser(user=newuser, email=mail_to_reg.lower())
                 newuser.save()
                 login(request, newuser)
-                return HttpResponseRedirect('../feed')
+                return HttpResponseRedirect('/feed/')
             else:
                 return JsonResponse({}, status=400)
         else:

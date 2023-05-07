@@ -26,3 +26,4 @@ class CustomUser(models.Model):
     cordinates = models.CharField(max_length=50, null=True)
     access = models.IntegerField(default=0)
     verified = models.BooleanField(default=False)
+    last_login = models.DateTimeField(null=True)
