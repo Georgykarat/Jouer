@@ -156,7 +156,7 @@ def check_code(request):
                 newuser = CustomUser(user=newuser, email=mail_to_reg.lower())
                 newuser.save()
                 login(request, newuser)
-                return HttpResponseRedirect('/feed/')
+                return JsonResponse({}, status=200)
             else:
                 return JsonResponse({}, status=400)
         else:

@@ -145,7 +145,7 @@ $(function(){
     SecondButton.on('click', function(){
         code = VerCode.val();
         if (code != "") {
-            SecondButton.text('Please wait...')
+            SecondButton.text('Processing...')
             $.ajax({
                 type: 'POST',
                 url: 'verify/',
@@ -156,6 +156,7 @@ $(function(){
                     password: pass,
                 },
                 success: function() {
+                    window.location.href = '/feed/'
                     // RegForm1.css('display', 'none');
                     // RegForm2.css('display', 'flex');
                 }
