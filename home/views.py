@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http.response import JsonResponse
 from django.conf import settings
+from django.utils import timezone
 from home.models import SignUpModel
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -13,6 +14,15 @@ import string
 
 
 # Functions for views
+def is_ajax(request):
+    """Function to check if request is ajax
+    Args:
+        request ([request]): [just request via url]
+    Returns:
+        [bool]: [True if request is ajax]
+    """
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
+
 
 def code_generate(l):
     """Function to generate random code
@@ -28,9 +38,18 @@ def code_generate(l):
 def send_email(addr_to, msg_subj, msg_text):
     """
     Function to send mail from Jouer mail
+    Args:
+        addr_to ([str]): [mail to]
+        msg_subj ([str]): [subject of mail]
+        msg_text ([str]): [text of mail. Code was already generated]
+    Returns:
+        [None]: [None]
+    
     """
     addr_from = settings.MAIL_REGCONF
     password = settings.MAIL_REGCONF_PASSWORD
+
+    print(addr_from, password)
 
     msg = MIMEMultipart()
     msg['From'] = addr_from
@@ -83,14 +102,14 @@ def login(request, *args, **kwargs):
     })
 
 def generate_confcode(request):
-    if request.is_ajax():
+    if is_ajax(request=request):
         mail_to_reg = request.POST['mail'].lower()
-        code = code_generate(8)
+        code = code_generate(6)
         regcode = 'Your code is ' + code
         send_email(mail_to_reg, 'Registration code', regcode)
         testuser = SignUpModel.objects.filter(mail=mail_to_reg)
         if testuser:
             testuser.delete()
-        tempuser = SignUpModel(mail=mail_to_reg, mailcode=code)
+        tempuser = SignUpModel(mail=mail_to_reg, code=code)
         tempuser.save()
         return JsonResponse({}, status=200)

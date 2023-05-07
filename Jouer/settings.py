@@ -87,7 +87,7 @@ STATICFILES_FINDERS = [
 ]
 
 # Your Mail to send RegConf code from
-MAIL_REGCONF = "jouer.bg.reg@gmail.com"
+MAIL_REGCONF = "jouer.bg.reg@yandex.ru"
 MAIL_REGCONF_PASSWORD = str(os.getenv('MAIL_REGCONF_PASSWORD'))
 
 
