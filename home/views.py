@@ -49,8 +49,6 @@ def send_email(addr_to, msg_subj, msg_text):
     addr_from = settings.MAIL_REGCONF
     password = settings.MAIL_REGCONF_PASSWORD
 
-    print(addr_from, password)
-
     msg = MIMEMultipart()
     msg['From'] = addr_from
     msg['To'] = addr_to
@@ -108,8 +106,16 @@ def generate_confcode(request):
         regcode = 'Your code is ' + code
         send_email(mail_to_reg, 'Registration code', regcode)
         testuser = SignUpModel.objects.filter(mail=mail_to_reg)
+        # We need to check, if the code was generated in the last 10 minutes
         if testuser:
-            testuser.delete()
-        tempuser = SignUpModel(mail=mail_to_reg, code=code)
-        tempuser.save()
+            if SignUpModel.objects.filter(mail=mail_to_reg).values_list('timestamp')[0][0] <= timezone.now() - timezone.timedelta(minutes=10):
+                testuser.delete()
+                tempuser = SignUpModel(mail=mail_to_reg, code=code)
+                tempuser.save()
+            else:
+                pass
+                # Here we can return a page "Code has been already requested"
+        else:
+            tempuser = SignUpModel(mail=mail_to_reg, code=code)
+            tempuser.save()
         return JsonResponse({}, status=200)
