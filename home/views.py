@@ -1,9 +1,74 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.http.response import JsonResponse
+from django.conf import settings
+from django.utils import timezone
+from home.models import SignUpModel, CustomUser
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.text import MIMEText
+from django.contrib.auth.hashers import make_password
+from email import encoders
+import random
+import string
 
 
-# Create your views here.
+# Functions for views
+def is_ajax(request):
+    """Function to check if request is ajax
+    Args:
+        request ([request]): [just request via url]
+    Returns:
+        [bool]: [True if request is ajax]
+    """
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
+
+
+def code_generate(l):
+    """Function to generate random code
+    Args:
+        l (int): [length of code]
+    Returns:
+        [str]: [random code]
+    return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(l))
+    
+    """
+    return ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(l))
+
+def send_email(addr_to, msg_subj, msg_text):
+    """
+    Function to send mail from Jouer mail
+    Args:
+        addr_to ([str]): [mail to]
+        msg_subj ([str]): [subject of mail]
+        msg_text ([str]): [text of mail. Code was already generated]
+    Returns:
+        [None]: [None]
+    
+    """
+    addr_from = settings.MAIL_REGCONF
+    password = settings.MAIL_REGCONF_PASSWORD
+
+    msg = MIMEMultipart()
+    msg['From'] = addr_from
+    msg['To'] = addr_to
+    msg['Subject'] = msg_subj
+
+    body = msg_text
+    msg.attach(MIMEText(body, 'plain'))
+
+    #Mail provider settings
+    server = smtplib.SMTP_SSL('smtp.yandex.ru', 465)
+    server.ehlo()
+    #server.starttls()
+    server.login(addr_from, password)
+    server.send_message(msg)
+    server.quit()
+
+# Views
 
 def home(request, *args, **kwargs):
     """Function to render home page
@@ -25,3 +90,74 @@ def signup(request, *args, **kwargs):
     """
     return render(request, 'home/signup.html', {
     })
+
+
+def signin(request, *args, **kwargs):
+    """Function to render login page
+    Args:
+        request ([request]): [just request via url]
+    Returns:
+        [render func]: [render login page]
+    """
+    return render(request, 'home/login.html', {
+    })
+
+def generate_confcode(request):
+    """
+    The function generates mail confirmation code and sends it to the user
+    Args:
+        request ([request]): [just request via url]
+    Returns:
+        [JsonResponse]: [Json with status 200]
+    
+    """
+    if is_ajax(request=request):
+        mail_to_reg = request.POST['mail'].lower()
+        code = code_generate(6)
+        regcode = 'Your code is ' + code
+        testuser = SignUpModel.objects.filter(mail=mail_to_reg)
+        # We need to check, if the code was generated in the last 10 minutes
+        if testuser:
+            if SignUpModel.objects.filter(mail=mail_to_reg).values_list('timestamp')[0][0] <= timezone.now() - timezone.timedelta(minutes=10):
+                testuser.delete()
+                tempuser = SignUpModel(mail=mail_to_reg, code=code)
+                tempuser.save()
+                send_email(mail_to_reg, 'Registration code', regcode)
+            else:
+                pass
+                # Here we can return a page "Code has been already requested"
+        else:
+            tempuser = SignUpModel(mail=mail_to_reg, code=code)
+            tempuser.save()
+            send_email(mail_to_reg, 'Registration code', regcode)
+        return JsonResponse({}, status=200)
+    
+
+def check_code(request):
+    """
+    The function checks the code and if it is correct, the user is redirected to the main page
+    Args:
+        request ([request]): [just request via url]
+    Returns:
+        [JsonResponse]: [Json with status 200]
+    
+    """
+    if is_ajax(request=request):
+        mail_to_reg = request.POST['mail'].lower()
+        code_to_reg = request.POST['code'].lower()
+        password = request.POST['password']
+        testuser = SignUpModel.objects.filter(mail=mail_to_reg)
+        if testuser:
+            if (testuser.values_list('code')[0][0]).lower() == code_to_reg:
+                testuser.delete()
+                varhash = make_password(password, None, 'pbkdf2_sha1')
+                newuser = User(username=mail_to_reg.lower(), password=varhash)
+                newuser.save()
+                newuser = CustomUser(user=newuser, email=mail_to_reg.lower())
+                newuser.save()
+                login(request, newuser)
+                return HttpResponseRedirect('/feed/')
+            else:
+                return JsonResponse({}, status=400)
+        else:
+            return JsonResponse({}, status=400)

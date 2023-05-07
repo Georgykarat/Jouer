@@ -34,8 +34,13 @@ main {
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background-color: #070707d8;
+    background-color: #070707a1;
     margin: 0vh 0;
+    transition: .5s;
+}
+.main__cnt:hover {
+    transition: .5s;
+    background-color: #070707ce;
 }
 .main__cnt_center {
     display: flex;
