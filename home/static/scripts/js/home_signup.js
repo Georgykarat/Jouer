@@ -5,6 +5,8 @@ $(function(){
     var ConfPass = $('.pass-f-con');
     var FirstButton = $('.main__form_submit_button');
     var Body = $('.main__signup_cnt');
+    var RegForm1 = $('.main__signup_cnt');
+    var RegForm2 = $('.main__signup_cnt2');
 
 
 
@@ -124,8 +126,8 @@ $(function(){
                     mail: ourmail,
                 },
                 success: function() {
-                    FirstFormCnt.css('display', 'none');
-                    SecondFormCnt.css('display', 'flex');
+                    RegForm1.css('display', 'none');
+                    RegForm2.css('display', 'flex');
                 }
             });
         } else if (($('input[type="checkbox"]').prop("checked") != true)) {

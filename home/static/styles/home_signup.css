@@ -45,6 +45,17 @@ main {
     border-radius: 20px;
     border: 1px solid transparent;
 }
+.main__signup_cnt2 {
+    display: none;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 30vw;
+    min-height: 70vh;
+    background-color: #252525d8;
+    border-radius: 20px;
+    border: 1px solid transparent;
+}
 .main__signup_form {
     display: flex;
     justify-content: center;
@@ -128,6 +139,19 @@ input {
     align-items: center;
     justify-content: center;
     cursor: not-allowed;
+}
+.main__form_submit_button2 {
+    width: 92%;
+    height: 35px;
+    background-color: grey;
+    color: #27cf7f;
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 .register__form-reg-block_checkbox {
     display: flex;

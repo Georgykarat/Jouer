@@ -104,6 +104,17 @@
                     <div class="main__form_submit_button">Продолжить</div>              
                 </form>
             </div>
+            <div class="main__signup_cnt2">
+                <form method="post" action="" class="main__signup_form">
+                    {% csrf_token %}
+                    <h2>Введите код</h2>
+                    <div class="main__form_inputcnt">
+                        <label>На Вашу почту был отправлен код. Введите его в окно ниже для подтверждения доступа к почте</label>
+                        <input type="text" class="code-f">
+                    </div>
+                    <div class="main__form_submit_button2">Продолжить</div>              
+                </form>
+            </div>
         </div>
     </main>
 </body>

@@ -104,7 +104,6 @@ def generate_confcode(request):
         mail_to_reg = request.POST['mail'].lower()
         code = code_generate(6)
         regcode = 'Your code is ' + code
-        send_email(mail_to_reg, 'Registration code', regcode)
         testuser = SignUpModel.objects.filter(mail=mail_to_reg)
         # We need to check, if the code was generated in the last 10 minutes
         if testuser:
@@ -112,10 +111,12 @@ def generate_confcode(request):
                 testuser.delete()
                 tempuser = SignUpModel(mail=mail_to_reg, code=code)
                 tempuser.save()
+                send_email(mail_to_reg, 'Registration code', regcode)
             else:
                 pass
                 # Here we can return a page "Code has been already requested"
         else:
             tempuser = SignUpModel(mail=mail_to_reg, code=code)
             tempuser.save()
+            send_email(mail_to_reg, 'Registration code', regcode)
         return JsonResponse({}, status=200)
