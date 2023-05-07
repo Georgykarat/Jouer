@@ -129,6 +129,12 @@ input {
     justify-content: center;
     cursor: not-allowed;
 }
+.register__form-reg-block_checkbox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
 .tick-one {
     display: none;
 }
@@ -142,8 +148,17 @@ input {
     display: none;
 }
 .mail-f {
-    border: 1px solid grey;
+    border-width: 1px;
+    border-style: solid;
+    border-color: grey;
 }
 .pass-f {
-    border: 1px solid grey;
+    border-width: 1px;
+    border-style: solid;
+    border-color: grey;
+}
+.pass-f-con {
+    border-width: 1px;
+    border-style: solid;
+    border-color: grey;
 }

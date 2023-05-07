@@ -86,6 +86,11 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
+# Your Mail to send RegConf code from
+MAIL_REGCONF = "jouer.bg.reg@gmail.com"
+MAIL_REGCONF_PASSWORD = str(os.getenv('MAIL_REGCONF_PASSWORD'))
+
+
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
