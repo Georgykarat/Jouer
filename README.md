@@ -1,5 +1,11 @@
 # Jouer
-Personal project. Application for RU market to find players in boardgames and track statistics
+Personal project. 
+
+## Idea
+
+Application for RU market to find players in boardgames and track statistics
+
+Currently have: Home page, Auth mechanism
 
 Version: 0.0.1
 
@@ -8,6 +14,7 @@ Version: 0.0.1
 ### Create some vars in your OS env (venv)
 
 SECRET_KEY - your Django secret key
+
 MAIL_REGCONF_PASSWORD - App password for Mail
 
 ### In Django settings.py set some consts
