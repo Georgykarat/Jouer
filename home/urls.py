@@ -6,5 +6,5 @@ urlpatterns = [
     path('signup/', views.signup, name="signup"),
     path('signup/generatepass/', views.generate_confcode, name="generate_confcode"),
     path('signup/verify/', views.check_code, name="check_code"),
-    path('login/', views.login, name="login"),
+    path('login/', views.signin, name="signin"),
 ]

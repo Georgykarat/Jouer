@@ -33,6 +33,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+DDOS_LIMIT = 30
+DDOS_EXPIRATION = 200
 # Application definition
 
 INSTALLED_APPS = [
@@ -54,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'Jouer.ddos_middleware.DDOSMiddleware',
 ]
 
 ROOT_URLCONF = 'Jouer.urls'
