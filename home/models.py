@@ -27,3 +27,4 @@ class CustomUser(models.Model):
     access = models.IntegerField(default=0)
     verified = models.BooleanField(default=False)
     last_login = models.DateTimeField(null=True)
+    image_path = models.CharField(verbose_name="image path", max_length = 1000, blank=True)
