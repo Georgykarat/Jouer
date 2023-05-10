@@ -5,7 +5,7 @@ Personal project.
 
 Application for RU market to find players in boardgames and track statistics
 
-Currently have: Home page, Auth mechanism
+Currently have: Home page, Auth mechanism, Feed page concept
 
 Version: 0.0.1
 
