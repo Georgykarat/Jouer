@@ -18,6 +18,7 @@ class CustomUser(models.Model):
     status = models.CharField(max_length=200, null=True)
     first_name = models.CharField(max_length=100, null=True)
     last_name = models.CharField(max_length=100, null=True)
+    nickname = models.CharField(max_length=100, null=True)
     sex = models.CharField(max_length=10, null=True)
     phone = models.CharField(max_length=15, null=True)
     email = models.EmailField(null=True)

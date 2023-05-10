@@ -107,4 +107,9 @@ h1 {
     margin-right: 7px;
     cursor: pointer;
     opacity: .8;
+    transition: .5s;
+}
+.header__bg_profile-picture:hover {
+    opacity: 1;
+    transition: .5s;
 }
