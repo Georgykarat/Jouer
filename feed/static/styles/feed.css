@@ -44,8 +44,10 @@ header {
 h1 {
     font-family: "ComissionerB";
     color: azure;
-    height: 43px;
-    width: 43px;
+    min-height: 43px;
+    min-width: 43px;
+    max-height: 43px;
+    max-width: 43px;
     background-color: rgb(116, 78, 255);
     border-radius: 45px;
     text-align: center;
@@ -61,6 +63,7 @@ h1 {
     border-radius: 20px;
     height: 43px;
     cursor: pointer;
+    width: auto;
 }
 .header__nav-li {
     display: flex;
@@ -112,4 +115,28 @@ h1 {
 .header__bg_profile-picture:hover {
     opacity: 1;
     transition: .5s;
+}
+main {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.main__central_cnt {
+    display: flex;
+    width: 99%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+h2 {
+    margin-top: 50px;
+    display: block;
+    width: 100%;
+    font-family: "ComissionerR";
+    font-size: 30px;
+    color: azure;
+    text-align: center;
+    user-select: none;
+}
+.h2__colored-text {
+    color: rgb(116, 78, 255);
 }
