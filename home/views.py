@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.http.response import JsonResponse
 from django.conf import settings
 from django.utils import timezone
+from home.forms import AuthForm
 from home.models import SignUpModel, CustomUser
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
@@ -99,8 +100,29 @@ def signin(request, *args, **kwargs):
     Returns:
         [render func]: [render login page]
     """
-    return render(request, 'home/login.html', {
-    })
+    if request.user.is_authenticated == True:
+        return HttpResponseRedirect('/feed/')
+    else:
+        if request.method == 'POST':
+            auth_form = AuthForm(request.POST, label_suffix='')
+            if auth_form.is_valid():
+                mail = auth_form.cleaned_data['mail']
+                password = auth_form.cleaned_data['password']
+                user = authenticate(username=mail.lower(), password=password)
+                if user:
+                    if user.is_active:
+                        login(request, user)
+                        return HttpResponseRedirect('/feed/')
+                    else:
+                        auth_form.add_error('__all__', 'Erroe! An account is inactive!')
+                else:
+                    auth_form.add_error('__all__', 'Login or password incorrect')
+        else:
+            auth_form = AuthForm()
+        context = {
+            'form': auth_form
+        }
+        return render(request, 'home/signin.html', context=context)
 
 def generate_confcode(request):
     """
