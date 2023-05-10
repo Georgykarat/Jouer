@@ -9,7 +9,7 @@ Currently have: Home page, Auth mechanism
 
 Version: 0.0.1
 
-## Deployment
+## Deployment (there will be Docker in future)
 
 ### Create some vars in your OS env (venv)
 
