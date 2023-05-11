@@ -2,7 +2,13 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.views import LogoutView
 from django.shortcuts import render
 from home.models import CustomUser
+from django.conf import settings
 
+
+class Design:
+    """Class for getting design details"""
+    def __init__(self):
+        self.color1 = settings.COLOR1
 
 
 class Person:
@@ -31,9 +37,11 @@ class Person:
 def feed(request):
     """Provides users the ability to see the feed"""
     if request.user.is_authenticated == True:
+        CurrentDesign = Design()
         CurrentUser = Person(request)
         return render(request, 'feed/feed.html', {
-            'nickname': CurrentUser.nickname,
+            'cuser': CurrentUser,
+            'design': CurrentDesign,
         })
     else:
         return HttpResponseRedirect('/login/')

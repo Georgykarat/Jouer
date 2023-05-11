@@ -37,7 +37,7 @@
   <header>
     <div class="header__center-cnt">
       <div class="header__nav-cnt">
-        <h1><img src="{% static 'img/g_dice/dice.png' %}" width=20></h1>
+        <h1 style="background-color: {{design.color1}}"><img src="{% static 'img/g_dice/dice.png' %}" width=20></h1>
         <ul class="header__nav-menu">
           <li class="header__nav-li header__nav-li_active">Рабочая область</li>
           <li class="header__nav-li">Библиотека</li>
@@ -53,7 +53,12 @@
   </header>
   <main>
     <div class="main__central_cnt">
-      <h2>Привет, {{nickname}} <span class="h2__colored-text">!</span></h2>
+      <h2>Привет, {{cuser.nickname}} <span class="h2__colored-text" style="color: {{design.color1}}">!</span></h2>
+    </div>
+    <div class="main__central_workspace">
+      <div class="main__central_workspace-item item__my-collection">
+        Моя коллекция
+      </div>
     </div>
   </main>
 </body>

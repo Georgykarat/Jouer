@@ -48,7 +48,6 @@ h1 {
     min-width: 43px;
     max-height: 43px;
     max-width: 43px;
-    background-color: rgb(116, 78, 255);
     border-radius: 45px;
     text-align: center;
     cursor: pointer;
@@ -120,6 +119,7 @@ main {
     display: flex;
     width: 100%;
     justify-content: center;
+    flex-wrap: wrap;
 }
 .main__central_cnt {
     display: flex;
@@ -137,6 +137,19 @@ h2 {
     text-align: center;
     user-select: none;
 }
-.h2__colored-text {
-    color: rgb(116, 78, 255);
+.main__central_workspace {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    min-width: 100%;
+}
+.main__central_workspace-item {
+    display: flex;
+    justify-content: start;
+    border-radius: 20px;
+}
+.item__my-collection {
+    width: 100px;
+    height: 100px;
+    background-color: azure;
 }
