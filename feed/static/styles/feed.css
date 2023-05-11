@@ -141,15 +141,41 @@ h2 {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    min-width: 100%;
+    min-width: 95%;
+    margin-top: 40px;
 }
 .main__central_workspace-item {
     display: flex;
     justify-content: start;
     border-radius: 20px;
+    cursor: pointer;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    transition: .5s;
+}
+.main__central_workspace-item:hover {
+    top: -5px;
+    left: -0px;
+    transition: .2s;
 }
 .item__my-collection {
-    width: 100px;
-    height: 100px;
+    width: 300px;
+    height: 150px;
     background-color: azure;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.main__my-collection-text {
+    font-size: 25px;
+    font-family: "ComissionerB";
+    display: flex;
+    width: 90%;
+}
+.main__my-collection-figure {
+    font-size: 70px;
+    font-family: "ComissionerB";
+    display: flex;
+    width: 90%;
 }
