@@ -9,6 +9,7 @@
     <script src="{% static 'frameworks/jQueryv3.6.0.min.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'styles/fonts.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'styles/feed.css' %}">
+    <script src="{% static 'scripts/feed.js' %}"></script>
     <style>
         /* width */
         ::-webkit-scrollbar {
@@ -47,6 +48,7 @@
       </div>
       <div class="header__left-cnt">
         <div class="header__bg_profile-picture" style="background-image: url({% static 'img/g_profiles/default.png' %})"></div>
+        <div class="header__bg_profile-options" style="background-image: url({% static 'img/g_dice/settings.png' %})"></div>
         <div class="header__logout-btn"><a href="logout/" class="header__a-logout-btn"><img src="{% static 'img/g_dice/exit.png' %}" width=17 class="header__exit-img"></a></div>
       </div>    
     </div>

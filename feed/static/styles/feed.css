@@ -99,6 +99,20 @@ h1 {
     right: -2px;
     top: 2px;
 }
+.header__bg_profile-options {
+    height: 43px;
+    width: 43px;
+    border-radius: 43px;
+    background-color: rgb(46, 46, 46);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: 40%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    margin-right: 7px;
+}
 .header__bg_profile-picture {
     height: 43px;
     width: 43px;
@@ -108,12 +122,8 @@ h1 {
     background-repeat: no-repeat;
     margin-right: 7px;
     cursor: pointer;
-    opacity: .8;
-    transition: .5s;
-}
-.header__bg_profile-picture:hover {
-    opacity: 1;
-    transition: .5s;
+    position: relative;
+    left: 50px;
 }
 main {
     display: flex;
