@@ -40,6 +40,7 @@ def feed(request):
         CurrentDesign = Design()
         CurrentUser = Person(request)
         return render(request, 'feed/feed.html', {
+            'page': 'workspace',
             'cuser': CurrentUser,
             'design': CurrentDesign,
         })
