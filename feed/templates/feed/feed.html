@@ -9,30 +9,8 @@
     <script src="{% static 'frameworks/jQueryv3.6.0.min.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'styles/fonts.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'styles/feed.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'gstyles/g_scroll.css' %}">
     <script src="{% static 'scripts/feed.js' %}"></script>
-    <style>
-        /* width */
-        ::-webkit-scrollbar {
-          width: 7px;
-        }
-        
-        /* Track */
-        ::-webkit-scrollbar-track {
-          background: #00000042; 
-        }
-         
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-          background: #dfdfdf7c;
-          border-radius: 20px;
-          margin: 2px; 
-        }
-        
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-          background: #555; 
-        }
-    </style>
 </head>
 <body>
   {% include "feed/feed_top.html" %}
