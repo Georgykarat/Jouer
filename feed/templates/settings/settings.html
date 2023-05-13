@@ -1,0 +1,69 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jouer Settings</title>
+    <script src="{% static 'frameworks/jQueryv3.6.0.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/fonts.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/feed.css' %}">
+    <script src="{% static 'scripts/feed.js' %}"></script>
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+          width: 7px;
+        }
+        
+        /* Track */
+        ::-webkit-scrollbar-track {
+          background: #00000042; 
+        }
+         
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+          background: #dfdfdf7c;
+          border-radius: 20px;
+          margin: 2px; 
+        }
+        
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+          background: #555; 
+        }
+    </style>
+</head>
+<body>
+  <header>
+    <div class="header__center-cnt">
+      <div class="header__nav-cnt">
+        <h1 style="background-color: {{design.color1}}"><img src="{% static 'img/g_dice/dice.png' %}" width=20></h1>
+        <ul class="header__nav-menu">
+          <li class="header__nav-li header__nav-li_active">Рабочая область</li>
+          <li class="header__nav-li">Библиотека</li>
+          <li class="header__nav-li">Рынок</li>
+          <li class="header__nav-li">Поиск игроков</li>
+        </ul>
+      </div>
+      <div class="header__left-cnt">
+        <div class="header__bg_profile-picture" style="background-image: url({% static 'img/g_profiles/default.png' %})"></div>
+        <a href="/feed/settings/"><div class="header__bg_profile-options {% if page == 'settings' %}settings-active{% endif %}" style="background-image: url({% static 'img/g_dice/settings.png' %})"></div></a>
+        <div class="header__logout-btn"><a href="logout/" class="header__a-logout-btn"><img src="{% static 'img/g_dice/exit.png' %}" width=17 class="header__exit-img"></a></div>
+      </div>    
+    </div>
+  </header>
+  <main>
+    <div class="main__central_cnt">
+      <h2>Настройки профиля {{cuser.nickname}} <span class="h2__colored-text" style="color: {{design.color1}}"></span></h2>
+    </div>
+    <div class="main__central_workspace">
+      <div class="main__central_workspace-item item__my-collection">
+        <span class="main__my-collection-text">Смена пароля</span>
+        <span class="main__my-collection-figure">&nbsp;</span>
+      </div>
+    </div>
+  </main>
+</body>
+{% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/home_media.css' %}"> {% endcomment %}
+</html>

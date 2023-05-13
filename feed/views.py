@@ -48,7 +48,17 @@ def feed(request):
     
 
 def usettings(request):
-    pass    
+    """View for profile settings page"""
+    if request.user.is_authenticated == True:
+        CurrentUser = Person(request)
+        CurrentDesign = Design()
+        return render(request, 'settings/settings.html', {
+            'page': 'settings',
+            'cuser': CurrentUser,
+            'design': CurrentDesign,
+        })
+    else:
+        return HttpResponseRedirect('/login/')    
 
 # def logout(request):
 #     """Provides users the ability to logout (func)"""

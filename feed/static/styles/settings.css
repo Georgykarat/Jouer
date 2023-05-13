@@ -1,0 +1,195 @@
+* {
+    font-family: "ComissionerR";
+	margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+body, html {
+    margin: 0;
+    height: 0;
+    max-width: 100%;
+    width: 100%;
+}
+body {
+    background-color: #0c0c0c;
+}
+header {
+    width: 100%;
+    height: 50px;
+    background-color: #0c0c0c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-indent: 1;
+}
+.header__center-cnt {
+    display: flex;
+    width: 99%;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+}
+.header__nav-cnt {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+h1 {
+    font-family: "ComissionerB";
+    color: azure;
+    min-height: 43px;
+    min-width: 43px;
+    max-height: 43px;
+    max-width: 43px;
+    border-radius: 45px;
+    text-align: center;
+    cursor: pointer;
+    margin-right: 7px;
+}
+.header__nav-menu {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(46, 46, 46);
+    border-radius: 20px;
+    height: 43px;
+    cursor: pointer;
+    width: auto;
+}
+.header__nav-li {
+    display: flex;
+    color: rgb(151, 151, 151);
+    font-size: 14px;
+    font-family: "ComissionerEL";
+    padding: 0 15px;
+    align-items: center;
+    justify-content: center;
+}
+.header__nav-li_active {
+    background-color: azure;
+    color: rgb(46, 46, 46);
+    height: 100%;
+    border-radius: 20px;
+}
+.header__left-cnt {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.header__logout-btn {
+    height: 43px;
+    width: 43px;
+    border-radius: 43px;
+    background-color: rgb(46, 46, 46);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header__exit-img {
+    position: relative;
+    right: -2px;
+    top: 2px;
+}
+.header__bg_profile-options {
+    height: 43px;
+    width: 43px;
+    border-radius: 43px;
+    background-color: rgb(46, 46, 46);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: 40%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    margin-right: 7px;
+}
+.header__bg_profile-picture {
+    height: 43px;
+    width: 43px;
+    border-radius: 43px;
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    margin-right: 7px;
+    cursor: pointer;
+    position: relative;
+    left: 50px;
+}
+main {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.main__central_cnt {
+    display: flex;
+    width: 99%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+h2 {
+    margin-top: 50px;
+    display: block;
+    width: 100%;
+    font-family: "ComissionerR";
+    font-size: 30px;
+    color: azure;
+    text-align: center;
+    user-select: none;
+}
+.main__central_workspace {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    min-width: 95%;
+    margin-top: 40px;
+}
+.main__central_workspace-item {
+    display: flex;
+    justify-content: start;
+    border-radius: 20px;
+    cursor: pointer;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    transition: .5s;
+    background-position: -500%;
+    background-repeat: no-repeat;
+    background-size: 0%;
+}
+
+.main__central_workspace-item:hover {
+    top: -5px;
+    left: -0px;
+    transition: .2s;
+}
+.item__my-collection {
+    width: 300px;
+    height: 150px;
+    background-color: azure;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.main__my-collection-text {
+    font-size: 25px;
+    font-family: "ComissionerB";
+    display: flex;
+    width: 90%;
+}
+.main__my-collection-figure {
+    font-size: 70px;
+    font-family: "ComissionerB";
+    display: flex;
+    width: 90%;
+}
