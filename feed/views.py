@@ -47,6 +47,9 @@ def feed(request):
         return HttpResponseRedirect('/login/')
     
 
+def usettings(request):
+    pass    
+
 # def logout(request):
 #     """Provides users the ability to logout (func)"""
 #     return HttpResponseRedirect('/')
