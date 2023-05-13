@@ -6,11 +6,11 @@ $(function(){
     TopPane.mouseenter(function() {
         ProfileButton.animate({
           left: '0px'
-        }, 200);
+        }, 400);
     }).mouseleave(function() {
         ProfileButton.animate({
           left: '50px'
-        }, 200);
+        }, 400);
     });
 
 

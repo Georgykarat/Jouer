@@ -163,7 +163,11 @@ h2 {
     top: 0px;
     left: 0px;
     transition: .5s;
+    background-position: -500%;
+    background-repeat: no-repeat;
+    background-size: 0%;
 }
+
 .main__central_workspace-item:hover {
     top: -5px;
     left: -0px;
