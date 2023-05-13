@@ -14,20 +14,20 @@
 </head>
 <body>
   {% include "feed/feed_top.html" %}
-  <main>
+  <main id="main">
     <div class="main__central_cnt">
       <h2>Настройки профиля {{cuser.nickname}} <span class="h2__colored-text" style="color: {{design.color1}}"></span></h2>
     </div>
     <div class="main__central_workspace">
-      <div class="main__central_workspace-item item__my-collection">
+      <div class="main__central_workspace-item item__change_pass">
         <div class="main__settings_changepass-1cnt">
           <span class="main__my-collection-text">Смена пароля</span>
           <span class="main__my-collection-figure">&nbsp;</span>
         </div>
         <div class="main__settings_changepass-2cnt">
-          <input class="main__settings_changepass-2cnt_input" placeholder="Старый пароль">
-          <input class="main__settings_changepass-2cnt_input" placeholder="Новый пароль">
-          <input class="main__settings_changepass-2cnt_input" placeholder="Новый пароль">
+          <input class="main__settings_changepass-2cnt_input" id="field1" placeholder="Старый пароль" type="password">
+          <input class="main__settings_changepass-2cnt_input" id="field2" placeholder="Новый пароль" type="password">
+          <input class="main__settings_changepass-2cnt_input" id="field3" placeholder="Повторите пароль" type="password">
           <div class="main__settings_changepass-2cnt_btn">Сменить пароль</div>
         </div>
       </div>
