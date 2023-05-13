@@ -8,9 +8,9 @@
     <title>Jouer Settings</title>
     <script src="{% static 'frameworks/jQueryv3.6.0.min.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'styles/fonts.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/feed.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/settings.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'gstyles/g_scroll.css' %}">
-    <script src="{% static 'scripts/feed.js' %}"></script>
+    <script src="{% static 'scripts/settings.js' %}"></script>
 </head>
 <body>
   {% include "feed/feed_top.html" %}
@@ -20,8 +20,16 @@
     </div>
     <div class="main__central_workspace">
       <div class="main__central_workspace-item item__my-collection">
-        <span class="main__my-collection-text">Смена пароля</span>
-        <span class="main__my-collection-figure">&nbsp;</span>
+        <div class="main__settings_changepass-1cnt">
+          <span class="main__my-collection-text">Смена пароля</span>
+          <span class="main__my-collection-figure">&nbsp;</span>
+        </div>
+        <div class="main__settings_changepass-2cnt">
+          <input class="main__settings_changepass-2cnt_input" placeholder="Старый пароль">
+          <input class="main__settings_changepass-2cnt_input" placeholder="Новый пароль">
+          <input class="main__settings_changepass-2cnt_input" placeholder="Новый пароль">
+          <div class="main__settings_changepass-2cnt_btn">Сменить пароль</div>
+        </div>
       </div>
     </div>
   </main>
