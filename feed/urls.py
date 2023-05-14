@@ -6,4 +6,5 @@ urlpatterns = [
     path("", views.feed, name="feed"),
     path("logout/", MainLogoutView.as_view(), name="logout"),
     path("settings/", views.usettings, name="settings"),
+    path("settings/changepassword/", views.usettings_changepass, name="usettings_changepass"),
 ]

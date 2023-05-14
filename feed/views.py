@@ -59,7 +59,11 @@ def usettings(request):
             'design': CurrentDesign,
         })
     else:
-        return HttpResponseRedirect('/login/')    
+        return HttpResponseRedirect('/login/')
+
+
+def usettings_changepass(request):
+    pass    
 
 # def logout(request):
 #     """Provides users the ability to logout (func)"""

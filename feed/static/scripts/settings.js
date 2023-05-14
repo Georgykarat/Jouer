@@ -26,10 +26,12 @@ $(function(){
       ChangePassBtn.css('background-color', '#26D07C');
       ChangePassBtn.css('color', 'azure');
       ChangePassBtn.css('cursor', 'pointer');
+      ChangePassBtn.attr('href', "changepass/");
     } else {
       ChangePassBtn.css('background-color', 'rgb(231, 231, 231)');
       ChangePassBtn.css('color', 'grey');
       ChangePassBtn.css('cursor', 'not-allowed');
+      ChangePassBtn.removeAttr('href');
     }
   });
 
