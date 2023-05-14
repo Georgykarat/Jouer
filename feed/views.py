@@ -1,8 +1,10 @@
 from django.http import HttpResponseRedirect
+from django.http.response import JsonResponse
 from django.contrib.auth.views import LogoutView
 from django.shortcuts import render
 from home.models import CustomUser
 from django.conf import settings
+from home.views import is_ajax
 
 
 class Design:
@@ -63,7 +65,13 @@ def usettings(request):
 
 
 def usettings_changepass(request):
-    pass    
+    if request.user.is_authenticated == True:
+        if is_ajax(request=request):
+            pass
+        else:
+            return JsonResponse({}, status=400)
+    else:
+        return HttpResponseRedirect('/login/')    
 
 # def logout(request):
 #     """Provides users the ability to logout (func)"""
