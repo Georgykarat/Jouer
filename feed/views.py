@@ -5,6 +5,7 @@ from django.shortcuts import render
 from home.models import CustomUser
 from django.conf import settings
 from home.views import is_ajax
+from django.contrib.auth import authenticate, update_session_auth_hash
 
 
 class Design:
@@ -70,6 +71,17 @@ def usettings_changepass(request):
             oldpass1 = request.POST['oldpass']
             oldpass2 = request.POST['oldpass2']
             newpass = request.POST['newpass']
+            if oldpass1 == oldpass2 and oldpass1 and newpass != oldpass1:
+                user = authenticate(request=request, username=request.user.username, password=oldpass1)
+                if user is not None:
+                    user.set_password(newpass)
+                    user.save()
+                    update_session_auth_hash(request, user)
+                    return JsonResponse({}, status=200)
+                else:
+                    return JsonResponse({}, status=400)
+            else:
+                return JsonResponse({}, status=400)
         else:
             return JsonResponse({}, status=400)
     else:
