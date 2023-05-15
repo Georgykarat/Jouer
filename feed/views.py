@@ -69,9 +69,9 @@ def usettings_changepass(request):
     if request.user.is_authenticated == True:
         if is_ajax(request=request):
             oldpass1 = request.POST['oldpass']
-            oldpass2 = request.POST['oldpass2']
             newpass = request.POST['newpass']
-            if oldpass1 == oldpass2 and oldpass1 and newpass != oldpass1:
+            newpass2 = request.POST['newpass2']
+            if oldpass1 != newpass and oldpass1 and newpass and newpass == newpass2:
                 user = authenticate(request=request, username=request.user.username, password=oldpass1)
                 if user is not None:
                     user.set_password(newpass)

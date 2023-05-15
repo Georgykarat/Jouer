@@ -42,10 +42,12 @@ $(function(){
         data: {
             csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
             oldpass: Field1.val(),
-            oldpass2: Field2.val(),
-            newpass: Field3.val(),
+            newpass: Field2.val(),
+            newpass2: Field3.val(),
         },
         success: function() {
+          ChangePassWindow1.css('display', 'flex');
+          ChangePassWindow2.css('display', 'none');
           Field1.val("");
           Field2.val("");
           Field3.val("");
