@@ -33,7 +33,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-DDOS_LIMIT = 30
+DDOS_LIMIT = 100
 DDOS_EXPIRATION = 200
 # Application definition
 

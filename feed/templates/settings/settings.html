@@ -24,12 +24,13 @@
           <span class="main__my-collection-text">Смена пароля</span>
           <span class="main__my-collection-figure">&nbsp;</span>
         </div>
-        <div class="main__settings_changepass-2cnt">
+        <form class="main__settings_changepass-2cnt" method="POST">
+        {% csrf_token %}
           <input class="main__settings_changepass-2cnt_input" id="field1" placeholder="Старый пароль" type="password">
           <input class="main__settings_changepass-2cnt_input" id="field2" placeholder="Новый пароль" type="password">
           <input class="main__settings_changepass-2cnt_input" id="field3" placeholder="Повторите пароль" type="password">
           <a class="main__settings_changepass-2cnt_btn"><div class="">Сменить пароль</div></a>
-        </div>
+        </form>
       </div>
     </div>
   </main>

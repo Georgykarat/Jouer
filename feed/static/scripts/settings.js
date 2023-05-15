@@ -51,6 +51,7 @@ $(function(){
           Field1.val("");
           Field2.val("");
           Field3.val("");
+          ChangePassBtn.text('Смените пароль');
         },
         error: function(xhr) {
 
