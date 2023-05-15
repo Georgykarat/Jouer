@@ -67,7 +67,9 @@ def usettings(request):
 def usettings_changepass(request):
     if request.user.is_authenticated == True:
         if is_ajax(request=request):
-            pass
+            oldpass1 = request.POST['oldpass']
+            oldpass2 = request.POST['oldpass2']
+            newpass = request.POST['newpass']
         else:
             return JsonResponse({}, status=400)
     else:

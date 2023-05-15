@@ -26,13 +26,36 @@ $(function(){
       ChangePassBtn.css('background-color', '#26D07C');
       ChangePassBtn.css('color', 'azure');
       ChangePassBtn.css('cursor', 'pointer');
-      ChangePassBtn.attr('href', "changepass/");
     } else {
       ChangePassBtn.css('background-color', 'rgb(231, 231, 231)');
       ChangePassBtn.css('color', 'grey');
       ChangePassBtn.css('cursor', 'not-allowed');
-      ChangePassBtn.removeAttr('href');
     }
   });
+
+  ChangePassBtn.on('click', function(){
+    if ((Field1.val() != "") && (Field2.val() != "") && (Field3.val() != "") && (Field2.val() == Field3.val()) && (Field1.val() != Field2.val())) {
+      ChangePassBtn.text('Подождите...');
+      $.ajax({
+        type: 'POST',
+        url: 'changepassword/',
+        data: {
+            csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            oldpass: Field1.val(),
+            oldpass2: Field2.val(),
+            newpass: Field3.val(),
+        },
+        success: function() {
+          Field1.val("");
+          Field2.val("");
+          Field3.val("");
+        },
+        error: function(xhr) {
+
+        }
+    });
+    }
+  })
+
 
 });
