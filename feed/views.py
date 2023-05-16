@@ -87,6 +87,25 @@ def usettings_changepass(request):
     else:
         return HttpResponseRedirect('/login/')    
 
+
+def upload_photo(request):
+    """Upload photo to profile"""
+    if request.method == 'POST':
+        # Process the uploaded photo here
+        # Save the cropped photo as the profile picture
+        if request.user.is_authenticated == True:
+            CurrentUser = Person(request)
+            CurrentDesign = Design()
+            return render(request, 'settings/settings.html', {
+                'page': 'settings',
+                'cuser': CurrentUser,
+                'design': CurrentDesign,
+            })
+        else:
+            return JsonResponse({}, status=400)
+    return JsonResponse({}, status=400)
+
+
 # def logout(request):
 #     """Provides users the ability to logout (func)"""
 #     return HttpResponseRedirect('/')

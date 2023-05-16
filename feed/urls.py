@@ -7,4 +7,5 @@ urlpatterns = [
     path("logout/", MainLogoutView.as_view(), name="logout"),
     path("settings/", views.usettings, name="settings"),
     path("settings/changepassword/", views.usettings_changepass, name="usettings_changepass"),
+    path('settings/upload/', views.upload_photo, name='upload_photo'),
 ]

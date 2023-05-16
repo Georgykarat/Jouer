@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'styles/fonts.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'styles/settings.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'gstyles/g_scroll.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropperjs/dist/cropper.min.css">
     <script src="{% static 'scripts/settings.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/cropperjs/dist/cropper.min.js"></script>
 </head>
@@ -33,8 +34,54 @@
           <a class="main__settings_changepass-2cnt_btn"><div class="">Сменить пароль</div></a>
         </form>
       </div>
+      <div class="main__central_workspace-item item__profilephoto">
+        <div class="main__settings_profilephoto-1cnt">
+          <span class="main__my-collection-text">Фото профиля</span>
+          <form method="POST" enctype="multipart/form-data" action="{% url 'upload_photo' %}">
+            {% csrf_token %}
+            <input type="file" name="photo" accept="image/*" required>
+            <button type="submit">Upload</button>
+          </form>
+          <img id="uploaded-photo" src="" alt="Uploaded Photo">
+          <span class="main__my-collection-figure">&nbsp;</span>
+        </div>
+      </div>
     </div>
   </main>
+  <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const image = document.getElementById('uploaded-photo');
+            const cropper = new Cropper(image, {
+                aspectRatio: 1, // Set the aspect ratio for the cropped image (e.g., 1:1)
+                movable: true,
+                zoomable: true,
+                scalable: false,
+                crop(event) {
+                    // Store the cropped coordinates in hidden form fields
+                    document.querySelector('#crop_x').value = event.detail.x;
+                    document.querySelector('#crop_y').value = event.detail.y;
+                    document.querySelector('#crop_width').value = event.detail.width;
+                    document.querySelector('#crop_height').value = event.detail.height;
+                }
+            });
+    
+            // Get the uploaded file and display it
+            const input = document.querySelector('input[type="file"]');
+            input.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+    
+                reader.onload = function(event) {
+                    image.src = event.target.result;
+                    image.style.display = 'block';
+                    cropper.replace(event.target.result);
+                };
+    
+                reader.readAsDataURL(file);
+            });
+            image.style.display = 'none';
+        });
+    </script>
 </body>
 {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/home_media.css' %}"> {% endcomment %}
 </html>
