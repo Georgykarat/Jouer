@@ -40,7 +40,7 @@
           <form method="POST" enctype="multipart/form-data" action="{% url 'upload_photo' %}">
             {% csrf_token %}
             <input type="file" name="photo" accept="image/*" required>
-            <button type="submit">Upload</button>
+            <button type="submit">Загрузить фото</button>
           </form>
           <img id="uploaded-photo" src="" alt="Uploaded Photo">
           <span class="main__my-collection-figure">&nbsp;</span>
@@ -73,7 +73,7 @@
     
                 reader.onload = function(event) {
                     image.src = event.target.result;
-                    image.style.display = 'block';
+                    image.style.display = 'flex';
                     cropper.replace(event.target.result);
                 };
     
