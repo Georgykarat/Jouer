@@ -103,10 +103,12 @@ def upload_photo(request):
             # Create the 'temp' directory if it doesn't exist
             if not os.path.exists('temp'):
                 os.makedirs('temp')
-            # Get extension, to assign proper name later
-            allowed_extensions = ['jpg', 'jpeg', 'png', 'gif']
+
+            # Get extension, to assign proper name later, also checks if ext is in allowed
+            allowed_extensions = ['jpg', 'jpeg', 'png']
             file_extension = photo.name.split('.')[-1].lower()
             if file_extension in allowed_extensions:
+
                 # Check file size
                 if photo.size <= 20 * 1024 * 1024:
                     # Save the uploaded photo temporarily
@@ -120,11 +122,6 @@ def upload_photo(request):
                     crop_y = request.POST.get('crop_y')
                     crop_width = request.POST.get('crop_width')
                     crop_height = request.POST.get('crop_height')
-
-                    print('crop_x:', crop_x)
-                    print('crop_y:', crop_y)
-                    print('crop_width:', crop_width)
-                    print('crop_height:', crop_height)
 
                     # Perform error checking for the cropping coordinates
                     if crop_x is None or crop_y is None or crop_width is None or crop_height is None:

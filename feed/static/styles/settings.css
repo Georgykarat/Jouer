@@ -130,22 +130,48 @@ h2 {
 }
 .item__profilephoto {
     width: 300px;
-    height: 300px;
+    height: 350px;
     background-color: rgb(247, 247, 247);
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
 }
+
 .main__settings_profilephoto-1cnt {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
 }
 #uploaded-photo {
-    height: 20px;
-    width: 20px;
+    height: 100px;
+    width: 100px;
+    margin-top: 20px;
     /* min-height: 50px;
     min-width: 50px;
     max-height: 50px;
     max-width: 50px; */
+}
+.main__profilephoto_upload {
+    margin:20px 0 0 0;
+    border-radius: 10px;
+    background-color: #e0e0e0;
+    padding: 5px;
+    border: 0px solid transparent;
+    cursor: pointer;
+}
+.custom-file-label {
+    /* margin:20px 0 0 0;
+    border-radius: 10px;
+    background-color: #26D07C;
+    padding: 5px;
+    border: 0px solid transparent;
+    cursor: pointer; */
+}
+.main__profilephoto_submit {
+    margin:20px 0 0 0;
+    border-radius: 10px;
+    background-color: #26D07C;
+    padding: 5px;
+    border: 0px solid transparent;
+    cursor: pointer;
 }

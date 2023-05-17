@@ -37,16 +37,18 @@
       <div class="main__central_workspace-item item__profilephoto">
         <div class="main__settings_profilephoto-1cnt">
           <span class="main__my-collection-text">Фото профиля</span>
-          <form method="POST" enctype="multipart/form-data" action="{% url 'upload_photo' %}">
+          <form method="POST" enctype="multipart/form-data" action="{% url 'upload_photo' %}" class="item__profilephoto_form">
             {% csrf_token %}
-            <input type="file" name="photo" accept="image/*" required>
+            <input type="file" name="photo" accept="image/*" required class="main__profilephoto_upload">
+            {% comment %} <label for="photo" class="custom-file-label">Choose a file</label> {% endcomment %}
             <input type="hidden" id="crop_x" name="crop_x">
             <input type="hidden" id="crop_y" name="crop_y">
             <input type="hidden" id="crop_width" name="crop_width">
             <input type="hidden" id="crop_height" name="crop_height">
-            <button type="submit">Загрузить фото</button>
+            <img id="uploaded-photo" src="" alt="Uploaded Photo">
+            <button type="submit" class="main__profilephoto_submit">Загрузить фото</button>
           </form>
-          <img id="uploaded-photo" src="" alt="Uploaded Photo">
+
           <span class="main__my-collection-figure">&nbsp;</span>
         </div>
       </div>
