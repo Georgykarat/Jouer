@@ -40,6 +40,10 @@
           <form method="POST" enctype="multipart/form-data" action="{% url 'upload_photo' %}">
             {% csrf_token %}
             <input type="file" name="photo" accept="image/*" required>
+            <input type="hidden" id="crop_x" name="crop_x">
+            <input type="hidden" id="crop_y" name="crop_y">
+            <input type="hidden" id="crop_width" name="crop_width">
+            <input type="hidden" id="crop_height" name="crop_height">
             <button type="submit">Загрузить фото</button>
           </form>
           <img id="uploaded-photo" src="" alt="Uploaded Photo">
