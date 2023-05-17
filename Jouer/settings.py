@@ -151,3 +151,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Color palette
 COLOR1 = '#FFAE00'
+
+
+# Media files root
+MEDIA_ROOT = os.path.join(BASE_DIR, 'rootmedia/')
+MEDIA_URL = '/rootmedia/'

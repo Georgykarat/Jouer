@@ -31,6 +31,10 @@
         ::-webkit-scrollbar-thumb:hover {
           background: #555; 
         }
+        .header__bg_profile-picture {
+          background-image: url({{ cuser.image_path }})
+        }
+
     </style>
 </head>
 <body>
@@ -46,7 +50,7 @@
         </ul>
       </div>
       <div class="header__left-cnt">
-        <div class="header__bg_profile-picture" style="background-image: url({% static 'img/g_profiles/default.png' %})"></div>
+        <div class="header__bg_profile-picture"></div>
         <a {% if page != 'settings' %}href="/feed/settings/"{% endif %}><div class="header__bg_profile-options {% if page == 'settings' %}settings-active{% endif %}" style="background-image: url({% static 'img/g_dice/settings.png' %})"></div></a>
         <div class="header__logout-btn"><a href="logout/" class="header__a-logout-btn"><img src="{% static 'img/g_dice/exit.png' %}" width=17 class="header__exit-img"></a></div>
       </div>    

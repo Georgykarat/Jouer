@@ -32,6 +32,8 @@ class Person:
         self.access = self.userdata['access']
         self.verified = self.userdata['verified']
         self.image_path = self.userdata['image_path']
+        if not self.image_path:
+            self.image_path =  settings.MEDIA_URL + 'profile_images/idefault.jpeg'
         if self.userdata['nickname']:
             self.nickname = self.userdata['nickname']
         else:
@@ -149,6 +151,9 @@ def upload_photo(request):
                     # Save the cropped image as the profile picture
                     cropped_photo_path = 'rootmedia/profile_images/i' + str(CurrentUser.userid) + '.' + file_extension
                     cropped_image.save(cropped_photo_path)
+                    UserObject = CustomUser.objects.filter(user=request.user).get()
+                    UserObject.image_path = "/" + cropped_photo_path
+                    UserObject.save()
 
                     # Remove the temporary uploaded photo
                     os.remove(photo_path)
