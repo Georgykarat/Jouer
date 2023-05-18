@@ -1,0 +1,188 @@
+* {
+    font-family: "ComissionerR";
+	margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+body, html {
+    margin: 0;
+    height: 0;
+    max-width: 100%;
+    width: 100%;
+}
+body {
+    background-color: #0c0c0c;
+}
+main {
+    display: block;
+    width: 100%;
+
+    height: 100vh;
+}
+.main__cnt {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #070707d8;
+    margin: 0vh 0;
+}
+.main__signup_cnt {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 30vw;
+    min-height: 70vh;
+    background-color: #252525d8;
+    border-radius: 20px;
+    border: 1px solid transparent;
+}
+.main__signup_cnt2 {
+    display: none;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 30vw;
+    min-height: 70vh;
+    background-color: #252525d8;
+    border-radius: 20px;
+    border: 1px solid transparent;
+}
+.main__signup_form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 90%;
+    padding: 5% 5%;
+}
+h2 {
+    font-size: 20px;
+    color: azure;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+label {
+    font-size: 10px;
+    text-align: center;
+    color: azure;
+    width: 90%;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    display: flex;
+}
+.main__form_inputcnt {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+input {
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background-color: azure;
+    color: #0c0c0c;
+    font-size: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 80%;
+    outline: none;
+}
+.register__form-reg-block {
+    display: flex;
+    width: 90%;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+.register__form-reg-block_checkbox {
+    display: flex;
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: start;
+}
+.checkbox__reg__custom {
+    width: 5%;
+    cursor: pointer;
+}
+.att-text-1 {
+    color: azure;
+    font-size: 10px;
+}
+.password-check-att-general-cnt-first-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.first-att {
+    margin-right: 20px;
+}
+.main__form_submit_button {
+    width: 92%;
+    height: 35px;
+    background-color: grey;
+    color: azure;
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: not-allowed;
+}
+.main__form_submit_button2 {
+    width: 92%;
+    height: 35px;
+    background-color: grey;
+    color: #27cf7f;
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.register__form-reg-block_checkbox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.tick-one {
+    display: none;
+}
+.tick-two {
+    display: none;
+}
+.tick-three {
+    display: none;
+}
+.tick-four {
+    display: none;
+}
+.mail-f {
+    border-width: 1px;
+    border-style: solid;
+    border-color: grey;
+}
+.pass-f {
+    border-width: 1px;
+    border-style: solid;
+    border-color: grey;
+}
+.pass-f-con {
+    border-width: 1px;
+    border-style: solid;
+    border-color: grey;
+}
