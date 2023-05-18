@@ -7,4 +7,5 @@ urlpatterns = [
     path('signup/generatepass/', views.generate_confcode, name="generate_confcode"),
     path('signup/verify/', views.check_code, name="check_code"),
     path('login/', views.signin, name="signin"),
+    path('login/changepass/', views.changepass, name="changepass"),
 ]

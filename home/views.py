@@ -183,3 +183,11 @@ def check_code(request):
                 return JsonResponse({}, status=400)
         else:
             return JsonResponse({}, status=400)
+        
+
+
+def changepass(request):
+    if is_ajax(request=request):
+        pass
+    else:
+        return JsonResponse({}, status=400)
