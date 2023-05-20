@@ -196,7 +196,6 @@ main {
     cursor: pointer;
 }
 .login-view {
-    display: flex;
     justify-content: center;
     align-items: center;
     background-color: #1f1f1f;
@@ -219,4 +218,10 @@ main {
     align-items: center;
     border-radius: 10px;
     cursor: pointer;
+}
+#main__signin1 {
+    display: flex;
+}
+#main__signin2 {
+    display: none;
 }
