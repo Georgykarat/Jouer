@@ -188,6 +188,10 @@ def check_code(request):
 
 def changepass(request):
     if is_ajax(request=request):
-        pass
+        mail_to_recover = request.POST['mail'].lower()
+        OurUser = SignUpModel.objects.filter(mail=mail_to_recover)
+        if OurUser:
+            code = code_generate(6)
+            mail_text = 'Your code is ' + code
     else:
         return JsonResponse({}, status=400)

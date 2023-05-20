@@ -5,6 +5,7 @@ $(function(){
     var MailField = $('#id_mail').val();
     var MailFiledRecovery = $('.main__email-recovermail');
     var ResetPassBtn = $('.forgot-pass');
+    var ResetPassBtn2 = $('.main__resetpass-btn');
 
 
     ResetPassBtn.on('click', function(){
@@ -13,6 +14,48 @@ $(function(){
         }
         Form1.css('display', 'none');
         Form2.css('display', 'flex');
+    });
+
+
+    MailFiledRecovery.on('keyup', function(){
+        var mail = MailFiledRecovery.val();
+        if (!mail.includes('@') || (mail == "") || !mail.includes('.'))  {
+            MailFiledRecovery.css('border-color','red');
+            mail = MailFiledRecovery.val();
+            ResetPassBtn2.css('background-color', '#c5c5c5');
+            ResetPassBtn2.css('cursor', 'not-allowed');
+        } else {
+            MailFiledRecovery.css('border-color','#27cf7f');
+            mail = MailFiledRecovery.val();
+            ResetPassBtn2.css('background-color', '#27cf7f');
+            ResetPassBtn2.css('cursor', 'pointer');
+        }
+    });
+
+
+    ResetPassBtn2.on('click', function(){
+        if (!mail.includes('@') || (mail == "") || !mail.includes('.')) {
+            MailFiledRecovery.css('border-color','red');
+            mail = MailFiledRecovery.val();
+            ResetPassBtn2.css('background-color', '#c5c5c5');
+            ResetPassBtn2.css('cursor', 'not-allowed');
+        } else {
+            ResetPassBtn2.text('Генерация кода...');
+            mail = MailFiledRecovery.val();
+            $.ajax({
+                type: 'POST',
+                url: 'changepass/',
+                data: {
+                    csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                    mail: mail,
+                },
+                success: function() {
+                    // window.location.href = '/feed/'
+                    // RegForm1.css('display', 'none');
+                    // RegForm2.css('display', 'flex');
+                }
+            });
+        }
     });
     
 });

@@ -225,3 +225,17 @@ main {
 #main__signin2 {
     display: none;
 }
+.main__resetpass-btn {
+    width: 100% ;
+    background-color: #c5c5c5;
+    color: white;
+    border: 0px solid transparent;
+    display: flex;
+    justify-content: center;
+    height: 30px;
+    align-items: center;
+    border-radius: 10px;
+    cursor: not-allowed;
+    font-size: 10px;
+    margin-top: 10px;
+}
