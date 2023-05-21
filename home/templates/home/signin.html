@@ -45,6 +45,18 @@
                 </div>
             </form>
         </div>
+        <div class="main-cnt-centre__small-cnt login-view" id="main__signin4">
+            <form method="post" action="" class="main__login-form">
+                {% csrf_token %}
+                <label>Новый пароль:</label>
+                <input class="main__new-pass" type="password" maxlength="6">
+                <label>Повторите пароль:</label>
+                <input class="main__new-pass2" type="password" maxlength="6">
+                <div class="sbm-cnt">
+                    <div class="main__setnewpass-btn">Сменить пароль</div>
+                </div>
+            </form>
+        </div>
     </main>
     {% comment %} <div class="main-cnt-centre__small-cnt reset-view">
         <h1 class="h1-new">Reset your password</h1>

@@ -227,4 +227,38 @@ def changepass(request):
     
 
 def checkcode(request):
-    pass
+    if is_ajax(request=request):
+        mail_to_recover = request.POST['mail'].lower()
+        code_to_check = request.POST['approve_code']
+        ConfCode = SignUpModel(mail=mail_to_recover, code=code_to_check)
+        if ConfCode:
+            if SignUpModel.objects.filter(mail=mail_to_recover, code=code_to_check).values_list('timestamp')[0][0] <= timezone.now() - timezone.timedelta(minutes=10):
+                returndata = {'reason':"Code has expired"}
+                return JsonResponse(returndata, status=400)
+            else:
+                change_password_code = code_generate(50)
+                encrypted_object = ChangePasswordRequest(mail=mail_to_recover,code=change_password_code)
+                encrypted_object.save()
+                returndata = {'encrypted_code':change_password_code}
+                return JsonResponse(returndata, status=200)
+        else:
+            return JsonResponse({}, status=400)
+    else:
+            return JsonResponse({}, status=400)
+    
+
+def setnewpassword(request):
+    if is_ajax(request=request):
+        mail_to_recover = request.POST['mail'].lower()
+        code_to_check = request.POST['requestcode']
+        new_password = request.POST['new_password']
+        encrypted_object = ChangePasswordRequest.objects.filter(mail=mail_to_recover,code=code_to_check)
+        if encrypted_object:
+            encrypted_object.delete()
+            varhash = make_password(new_password, None, 'pbkdf2_sha1')
+            User.objects.filter(username=mail_to_recover).update(password=varhash)
+            return JsonResponse({}, status=200)
+        else:
+            return JsonResponse({}, status=400)
+    else:
+        return JsonResponse({}, status=400)
