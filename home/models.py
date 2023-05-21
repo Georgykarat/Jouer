@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from encrypted_model_fields.fields import EncryptedCharField
 
 # Create your models here.
 
@@ -36,5 +37,5 @@ class ChangePasswordRequest(models.Model):
     Model to store codes for change pass requests (used to request change password from login page)
     """
     mail = models.EmailField()
-    code = models.CharField(max_length=30)
+    code = EncryptedCharField(max_length=40)
     reqtime =  models.DateTimeField(auto_now_add=True)

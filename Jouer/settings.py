@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'encrypted_model_fields',
     'home',
     'feed',
 ]
@@ -156,3 +157,6 @@ COLOR1 = '#FFAE00'
 # Media files root
 MEDIA_ROOT = os.path.join(BASE_DIR, 'rootmedia/')
 MEDIA_URL = '/rootmedia/'
+
+# Encryption key for encrypting fields
+FIELD_ENCRYPTION_KEY = str(os.getenv('FIELD_ENCRYPTION_KEY'))
