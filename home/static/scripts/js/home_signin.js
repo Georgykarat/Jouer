@@ -41,14 +41,13 @@ $(function(){
 
 
     ResetPassBtn2.on('click', function(){
+        var mail = MailFiledRecovery.val();
         if (!mail.includes('@') || (mail == "") || !mail.includes('.')) {
             MailFiledRecovery.css('border-color','red');
-            mail = MailFiledRecovery.val();
             ResetPassBtn2.css('background-color', '#c5c5c5');
             ResetPassBtn2.css('cursor', 'not-allowed');
         } else {
             ResetPassBtn2.text('Генерация кода...');
-            mail = MailFiledRecovery.val();
             $.ajax({
                 type: 'POST',
                 url: 'changepass/',
