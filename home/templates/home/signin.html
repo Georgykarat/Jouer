@@ -14,6 +14,7 @@
 <body>
 {% include "home/home_top.html" %}
     <main>
+        <input type="hidden" name="hiddenRegField" value="" id="hiddenRegField">
         <div class="main-cnt-centre__small-cnt login-view" id="main__signin1">
             <!--<h1 class="h1-new">Snack In</h1>-->
             <form method="post" action="" class="main__login-form">
@@ -49,9 +50,9 @@
             <form method="post" action="" class="main__login-form">
                 {% csrf_token %}
                 <label>Новый пароль:</label>
-                <input class="main__new-pass" type="password" maxlength="6">
+                <input class="main__new-pass" type="password">
                 <label>Повторите пароль:</label>
-                <input class="main__new-pass2" type="password" maxlength="6">
+                <input class="main__new-pass2" type="password">
                 <div class="sbm-cnt">
                     <div class="main__setnewpass-btn">Сменить пароль</div>
                 </div>

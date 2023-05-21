@@ -11,8 +11,9 @@ $(function(){
     var PassField2 = $('.main__new-pass2');
     var ResetPassBtn = $('.forgot-pass');
     var ResetPassBtn2 = $('.main__resetpass-btn');
-    var ResetPassBtn3 = $('.main__code-approve-btn')
-    var ResetPassBtn4 = $('.main__setnewpass-btn')
+    var ResetPassBtn3 = $('.main__code-approve-btn');
+    var ResetPassBtn4 = $('.main__setnewpass-btn');
+    var HiddenField = $('#hiddenRegField');
 
 
     ResetPassBtn.on('click', function(){
@@ -80,6 +81,7 @@ $(function(){
 
 
     ResetPassBtn3.on('click', function(){
+        var approve_code = CodeField.val();
         if (approve_code.length != 6) {
             CodeField.css('border-color','red');
             approve_code = CodeField.val();
@@ -94,10 +96,13 @@ $(function(){
                 data: {
                     csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
                     approve_code: approve_code,
-                    mail: mail,
+                    mail: MailFiledRecovery.val(),
                 },
                 success: function(response) {
                     var requestcode = response.encrypted_code;
+                    HiddenField.val(requestcode);
+                    Form3.css('display', 'none');
+                    Form4.css('display', 'flex');
                 }
             });
         }
@@ -116,7 +121,7 @@ $(function(){
     PassField2.on('keyup', function(){
         var new_pass_code2;
         new_pass_code2 = PassField2.val();
-        if ((!/^[a-z0-9]+$/.test(new_pass_code2) == true) && (!/^[A-Z0-9]+$/.test(new_pass_code2) == true) && ( !/^[A-Za-z]+$/.test(new_pass_code2) == true) && (new_pass_code2.length >= 8) && (new_pass_code2 != "") && (new_pass_code2 == new_pass_code)) {
+        if ((new_pass_code2 != "") && (new_pass_code2 == new_pass_code)) {
             PassField2.css('border-color','#27cf7f');
         } else {
             PassField2.css('border-color','red');
@@ -125,6 +130,9 @@ $(function(){
 
 
     ResetPassBtn4.on('click', function(){
+        mail = MailFiledRecovery.val();
+        new_pass_code = PassField1.val();
+        new_pass_code2 = PassField2.val();
         if ((!/^[a-z0-9]+$/.test(new_pass_code2) == true) && (!/^[A-Z0-9]+$/.test(new_pass_code2) == true) && ( !/^[A-Za-z]+$/.test(new_pass_code2) == true) && (new_pass_code2.length >= 8) && (new_pass_code2 != "") && (new_pass_code2 == new_pass_code)) {
             ResetPassBtn4.text('Смена пароля...');
             new_password = PassField1.val();
@@ -134,7 +142,7 @@ $(function(){
                 data: {
                     csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
                     mail: mail,
-                    requestcode: requestcode,
+                    requestcode: HiddenField.val(),
                     new_password: new_password,
                 },
                 success: function() {
