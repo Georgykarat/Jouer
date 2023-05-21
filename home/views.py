@@ -251,14 +251,25 @@ def setnewpassword(request):
     if is_ajax(request=request):
         mail_to_recover = request.POST['mail'].lower()
         code_to_check = request.POST['requestcode']
-        new_password = request.POST['new_password']
-        encrypted_object = ChangePasswordRequest.objects.filter(mail=mail_to_recover,code=code_to_check)
-        if encrypted_object:
+        encrypted_objects = ChangePasswordRequest.objects.filter(mail=mail_to_recover)
+
+        matching_objects = []
+        for encrypted_object in encrypted_objects:
+            if encrypted_object.code == code_to_check:
+                matching_objects.append(encrypted_object)
+
+        if matching_objects:
+            encrypted_object = matching_objects[0]
             encrypted_object.delete()
-            varhash = make_password(new_password, None, 'pbkdf2_sha1')
+
+            varhash = make_password(request.POST['new_password'], None, 'pbkdf2_sha1')
             User.objects.filter(username=mail_to_recover).update(password=varhash)
+
             return JsonResponse({}, status=200)
         else:
+            print(f'encrypted_object does not exist. Code is {code_to_check}, Objects found: {len(matching_objects)}, Mail: {mail_to_recover}')
             return JsonResponse({}, status=400)
     else:
+        print('Not AJAX')
         return JsonResponse({}, status=400)
+    
