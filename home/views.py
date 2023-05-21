@@ -224,3 +224,7 @@ def changepass(request):
             return JsonResponse({}, status=400)
     else:
         return JsonResponse({}, status=400)
+    
+
+def checkcode(request):
+    pass

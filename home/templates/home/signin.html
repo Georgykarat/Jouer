@@ -39,7 +39,7 @@
             <form method="post" action="" class="main__login-form">
                 {% csrf_token %}
                 <label>Код отправлен Вам на почту:</label>
-                <input class="main__code-approve">
+                <input class="main__code-approve" type="text" maxlength="6">
                 <div class="sbm-cnt">
                     <div class="main__code-approve-btn">Подтвердить код</div>
                 </div>
