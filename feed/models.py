@@ -18,6 +18,8 @@ class BoardgamesBase(models.Model):
     genre_campaign = models.BooleanField(blank=True)
     is_dlc = models.BooleanField(default=False)
     base_game = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE, related_name='dlcs')
+    imagepath = models.CharField(max_length=200, blank=True)
+    iconpath = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
         return self.name
