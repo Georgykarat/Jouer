@@ -38,4 +38,4 @@ class ChangePasswordRequest(models.Model):
     """
     mail = models.EmailField()
     code = EncryptedCharField(max_length=50)
-    reqtime =  models.DateTimeField(auto_now_add=True)
+    reqtime =  models.DateTimeField(auto_now_add=True, null=True)

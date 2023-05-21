@@ -198,10 +198,10 @@ def changepass(request):
         mail_to_recover = request.POST['mail'].lower()
         OurUser = User.objects.filter(username=mail_to_recover) # !!! Here we need to check user in Users table
         if OurUser:
-            ConfCode = SignUpModel(mail=mail_to_recover)
-            if ConfCode:
+            ConfCode = SignUpModel.objects.filter(mail=mail_to_recover)
+            if ConfCode.exists():
                 # If Mail Confirmation code exists in db
-                if SignUpModel.objects.filter(mail=mail_to_recover).values_list('timestamp')[0][0] <= timezone.now() - timezone.timedelta(minutes=10):
+                if SignUpModel.objects.filter(mail=mail_to_recover).first().timestamp <= timezone.now() - timezone.timedelta(minutes=10):
                     # There is old code (+10m.) - generate and send a new code
                     ConfCode.delete()
                     code = code_generate(6)
@@ -230,8 +230,8 @@ def checkcode(request):
     if is_ajax(request=request):
         mail_to_recover = request.POST['mail'].lower()
         code_to_check = request.POST['approve_code']
-        ConfCode = SignUpModel(mail=mail_to_recover, code=code_to_check)
-        if ConfCode:
+        ConfCode = SignUpModel.objects.filter(mail=mail_to_recover, code=code_to_check)
+        if ConfCode.exists():
             if SignUpModel.objects.filter(mail=mail_to_recover, code=code_to_check).values_list('timestamp')[0][0] <= timezone.now() - timezone.timedelta(minutes=10):
                 returndata = {'reason':"Code has expired"}
                 return JsonResponse(returndata, status=400)
