@@ -29,3 +29,12 @@ class CustomUser(models.Model):
     verified = models.BooleanField(default=False)
     last_login = models.DateTimeField(null=True, blank=True)
     image_path = models.CharField(verbose_name="image path", max_length = 1000, blank=True)
+
+
+class ChangePasswordRequest(models.Model):
+    """
+    Model to store codes for change pass requests (used to request change password from login page)
+    """
+    mail = models.EmailField()
+    code = models.CharField(max_length=30)
+    reqtime =  models.DateTimeField(auto_now_add=True)

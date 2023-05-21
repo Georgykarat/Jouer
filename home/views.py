@@ -4,7 +4,7 @@ from django.http.response import JsonResponse
 from django.conf import settings
 from django.utils import timezone
 from home.forms import AuthForm
-from home.models import SignUpModel, CustomUser
+from home.models import SignUpModel, CustomUser, ChangePasswordRequest
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 import smtplib
@@ -187,6 +187,13 @@ def check_code(request):
 
 
 def changepass(request):
+    """
+    The function checks the confirmation code and generates anew one, if it is not exist
+    Args:
+        request ([request]): [just request via url]
+    Returns:
+        [JsonResponse]: [Json with status 200]
+    """
     if is_ajax(request=request):
         mail_to_recover = request.POST['mail'].lower()
         OurUser = User.objects.filter(username=mail_to_recover) # !!! Here we need to check user in Users table
@@ -213,5 +220,7 @@ def changepass(request):
                 ConfCode.save()
                 send_email(mail_to_recover, 'Your password recovery code:', code)
                 return JsonResponse({}, status=200)
+        else:
+            return JsonResponse({}, status=400)
     else:
         return JsonResponse({}, status=400)

@@ -2,10 +2,12 @@ $(function(){
 
     var Form1 = $('#main__signin1');
     var Form2 = $('#main__signin2');
+    var Form3 = $('#main__signin3');
     var MailField = $('#id_mail').val();
     var MailFiledRecovery = $('.main__email-recovermail');
     var ResetPassBtn = $('.forgot-pass');
     var ResetPassBtn2 = $('.main__resetpass-btn');
+    var ResetPassBtn3 = $('.main__code-approve-btn')
 
 
     ResetPassBtn.on('click', function(){

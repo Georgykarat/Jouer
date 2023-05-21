@@ -35,6 +35,16 @@
                 </div>
             </form>
         </div>
+        <div class="main-cnt-centre__small-cnt login-view" id="main__signin3">
+            <form method="post" action="" class="main__login-form">
+                {% csrf_token %}
+                <label>Код отправлен Вам на почту:</label>
+                <input class="main__code-approve">
+                <div class="sbm-cnt">
+                    <div class="main__code-approve-btn">Подтвердить код</div>
+                </div>
+            </form>
+        </div>
     </main>
     {% comment %} <div class="main-cnt-centre__small-cnt reset-view">
         <h1 class="h1-new">Reset your password</h1>
