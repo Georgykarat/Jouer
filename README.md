@@ -17,6 +17,8 @@ SECRET_KEY - your Django secret key
 
 MAIL_REGCONF_PASSWORD - App password for Mail
 
+FIELD_ENCRYPTION_KEY - Generate encryption key to encrypt some requests code (f.e. to change password)
+
 ### In Django settings.py set some consts
 
 MAIL_REGCONF - your mail address for sendouts
