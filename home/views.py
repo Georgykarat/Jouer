@@ -227,6 +227,9 @@ def changepass(request):
     
 
 def checkcode(request):
+    """
+    The function checks code, and if it's correct - raises pass change ticket and generates a token
+    """
     if is_ajax(request=request):
         mail_to_recover = request.POST['mail'].lower()
         code_to_check = request.POST['approve_code']
@@ -248,6 +251,9 @@ def checkcode(request):
     
 
 def setnewpassword(request):
+    """
+    The function checks the encrypted code, and if it's correct - sets a new password
+    """
     if is_ajax(request=request):
         mail_to_recover = request.POST['mail'].lower()
         code_to_check = request.POST['requestcode']
@@ -267,7 +273,7 @@ def setnewpassword(request):
 
             return JsonResponse({}, status=200)
         else:
-            print(f'encrypted_object does not exist. Code is {code_to_check}, Objects found: {len(matching_objects)}, Mail: {mail_to_recover}')
+            print(f'encrypted_object does not exist')
             return JsonResponse({}, status=400)
     else:
         print('Not AJAX')
