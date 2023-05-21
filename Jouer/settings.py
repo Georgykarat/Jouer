@@ -159,4 +159,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'rootmedia/')
 MEDIA_URL = '/rootmedia/'
 
 # Encryption key for encrypting fields
-FIELD_ENCRYPTION_KEY = str(os.getenv('FIELD_ENCRYPTION_KEY'))
+FIELD_ENCRYPTION_KEY = os.getenv('FIELD_ENCRYPTION_KEY').encode('utf-8')

@@ -37,5 +37,5 @@ class ChangePasswordRequest(models.Model):
     Model to store codes for change pass requests (used to request change password from login page)
     """
     mail = models.EmailField()
-    code = EncryptedCharField(max_length=40)
+    code = EncryptedCharField(max_length=50)
     reqtime =  models.DateTimeField(auto_now_add=True)
