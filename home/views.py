@@ -189,9 +189,29 @@ def check_code(request):
 def changepass(request):
     if is_ajax(request=request):
         mail_to_recover = request.POST['mail'].lower()
-        OurUser = SignUpModel.objects.filter(mail=mail_to_recover)
+        OurUser = User.objects.filter(username=mail_to_recover) # !!! Here we need to check user in Users table
         if OurUser:
-            code = code_generate(6)
-            mail_text = 'Your code is ' + code
+            ConfCode = SignUpModel(mail=mail_to_recover)
+            if ConfCode:
+                # If Mail Confirmation code exists in db
+                if SignUpModel.objects.filter(mail=mail_to_recover).values_list('timestamp')[0][0] <= timezone.now() - timezone.timedelta(minutes=10):
+                    # There is old code (+10m.) - generate and send a new code
+                    ConfCode.delete()
+                    code = code_generate(6)
+                    ConfCode = SignUpModel(mail=mail_to_recover, code=code)
+                    ConfCode.save()
+                    send_email(mail_to_recover, 'Your password recovery code:', code)
+                    return JsonResponse({}, status=200)
+                else:
+                    # There is a code which was generated in the last 10 minutes - just to resend it
+                    send_email(mail_to_recover, 'Your password recovery code:', ConfCode.values_list('code')[0][0])
+                    return JsonResponse({}, status=200)
+            else:
+                # if Mail Confirmation code does not exist in db - create code and send mail
+                code = code_generate(6)
+                ConfCode = SignUpModel(mail=mail_to_recover, code=code)
+                ConfCode.save()
+                send_email(mail_to_recover, 'Your password recovery code:', code)
+                return JsonResponse({}, status=200)
     else:
         return JsonResponse({}, status=400)
