@@ -2,57 +2,48 @@ import csv
 import requests
 from bs4 import BeautifulSoup
 
+
 # Set your login credentials
 username = 'gitekaw712@asuflex.com'
 password = '85?v_jvB$4JRrVe'
 
-# Send a POST request to the login page to retrieve a session cookie
-login_url = 'https://boardgamegeek.com/login'
-session = requests.session()
-session.get(login_url)
-login_data = {'username': username, 'password': password}
-session.post(login_url, data=login_data)
+import requests
+import xml.etree.ElementTree as ET
+import pandas as pd
 
-# Send a GET request to the boardgame listing while including the session cookie in the headers
-url = 'https://boardgamegeek.com/browse/boardgame'
-response = session.get(url, headers={'referer': login_url})
-soup = BeautifulSoup(response.content, 'html.parser')
+# Create an empty DataFrame to store the board game data
+boardgames_df = pd.DataFrame(columns=['Game ID', 'Name', 'Description', 'Year Published', 'Min Players', 'Max Players', 'Playing Time'])
 
-# Find the total number of pages in the boardgame listing
-last_page_link = soup.find('a', {'title': 'last page'})
-total_pages = int(last_page_link['href'].split('/')[-1])
+for i in range(1, 200944):
+    try:
+        # Send a GET request to the API endpoint for the current board game ID
+        url = f'https://boardgamegeek.com/xmlapi/boardgame/{i}'
+        response = requests.get(url)
 
-# Loop through each page and extract the boardgame data
-boardgames_data = []
-for page in range(1, total_pages + 1):
-    page_url = f'https://boardgamegeek.com/browse/boardgame/page/{page}'
-    page_response = session.get(page_url, headers={'referer': url})
-    page_soup = BeautifulSoup(page_response.content, 'html.parser')
+        # Parse the XML data for the current board game
+        root = ET.fromstring(response.content)
 
-    # Find all tables in the page
-    tables = page_soup.find_all('table')
+        # Extract the relevant information for the current board game
+        game_id = str(i)
+        name = root.find('boardgame/name').text.strip() if root.find('boardgame/name') is not None else ''
+        print(f"{i}. {name}")
+        description = root.find('boardgame/description').text.strip() if root.find('boardgame/description') is not None else ''
+        year_published = root.find('boardgame/yearpublished').text.strip() if root.find('boardgame/yearpublished') is not None else ''
+        min_players = root.find('boardgame/minplayers').text.strip() if root.find('boardgame/minplayers') is not None else ''
+        max_players = root.find('boardgame/maxplayers').text.strip() if root.find('boardgame/maxplayers') is not None else ''
+        playing_time = root.find('boardgame/playingtime').text.strip() if root.find('boardgame/playingtime') is not None else ''
 
-    # Find the table containing the boardgame data
-    table = None
-    for t in tables:
-        if 'collection_table' in t.attrs.get('class', []):
-            table = t
-            break
+        # Add the board game data to the DataFrame
+        boardgames_df = boardgames_df.append({'Game ID': game_id, 'Name': name, 'Description': description,
+                                              'Year Published': year_published, 'Min Players': min_players,
+                                              'Max Players': max_players, 'Playing Time': playing_time}, ignore_index=True)
 
-    if not table:
-        print(f'Could not find table on page {page}')
-        continue
+        print(f'Processed board game with ID: {game_id}')
 
-    # Extract the data from the table rows and store in a list of lists
-    rows = table.find_all('tr')
-    for row in rows:
-        columns = row.find_all('td')
-        if columns:
-            # Extract the data from each column in the row and store in a list
-            data = [column.get_text().strip() for column in columns]
-            boardgames_data.append(data)
+    except ET.ParseError as e:
+        print(f'Error parsing XML data for board game with ID: {i}, {e}')
 
-# Write the boardgames data to a CSV file
-with open('boardgames.csv', 'w', newline='', encoding='utf-8') as f:
-    writer = csv.writer(f)
-    writer.writerows(boardgames_data)
+# Save the DataFrame to a CSV file
+boardgames_df.to_csv('boardgames.csv', index=False)
+
+print('Board games data has been successfully parsed and saved to "boardgames.csv".')
