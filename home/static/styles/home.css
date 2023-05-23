@@ -166,3 +166,46 @@ main {
     font-family: "ComissionerB";
     font-size: 8px;
 }
+.section__roadmap_header {
+    text-align: center;
+    font-size: 30px;
+    font-family: "ComissionerEL";
+    color: white;
+    margin-bottom: 80px;
+}
+.section__roadmap {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 80px;
+}
+.section__roadmap-cntr {
+    display: flex;
+    width: 90%;
+    justify-content: start;
+}
+.section__roadmap_ul {
+    display: flex;
+    width: 100%;
+    border-radius: 20px;
+    justify-content: space-between;
+
+}
+.section__roadmap_ul-leftcnt {
+    width: 60%;
+    padding: 20px 10px;
+    border-radius: 20px;
+}
+.section__roadmap_ul-rightcnt {
+    width: 30%;
+}
+.h3__stage-header {
+    font-size: 30px;
+    font-family: "ComissionerB";
+    color: white;
+}
+.greycolor {
+    color: #adadad;
+    font-family: "ComissionerB";
+}
