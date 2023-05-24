@@ -44,7 +44,7 @@ h2 {
 }
 .main__central_workspace {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     flex-wrap: wrap;
     min-width: 95%;
     margin-top: 40px;
@@ -61,6 +61,7 @@ h2 {
     background-position: -500%;
     background-repeat: no-repeat;
     background-size: 0%;
+    margin-right: 20px;
 }
 
 .main__central_workspace-item:hover {
@@ -75,6 +76,26 @@ h2 {
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
+}
+.item__my-guilds {
+    width: 300px;
+    height: 150px;
+    background-color: azure;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.main__central_guilds-block {
+    display: flex;
+    width: 100%;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+.main__central_guilds-text {
+    display: flex;
+    width: 100%;
+    font-size: 18px;
+    font-family: "ComissionerEL";
 }
 .main__my-collection-text {
     font-size: 25px;

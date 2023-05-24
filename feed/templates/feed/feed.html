@@ -19,10 +19,17 @@
       <h2>Привет, {{cuser.nickname}} <span class="h2__colored-text" style="color: {{design.color1}}">!</span></h2>
     </div>
     <div class="main__central_workspace">
-      <div class="main__central_workspace-item item__my-collection" style="background-image: url({% static 'img/g_bg/rounded-black-square-shape.png' %})">
+      <div class="main__central_workspace-item item__my-collection">
         <span class="main__my-collection-text">Моя коллекция</span>
         <span class="main__my-collection-figure">0</span>
       </div>
+      <a href="/feed/myguilds/"><div class="main__central_workspace-item item__my-guilds">
+        <span class="main__my-collection-text">Ваши гильдии:</span>
+        {% comment %} <span class="main__my-collection-figure">0</span> {% endcomment %}
+        <div class="main__central_guilds-block">
+          <div class="main__central_guilds-text">У вас еще нет гильдий 🙃</div>
+        </div>
+      </div></a>
     </div>
   </main>
 </body>

@@ -172,9 +172,16 @@ def upload_photo(request):
     return JsonResponse({}, status=400)
 
 
-# def logout(request):
-#     """Provides users the ability to logout (func)"""
-#     return HttpResponseRedirect('/')
+def myguilds(request):
+    if request.user.is_authenticated == True:
+        CurrentUser = Person(request)
+        CurrentDesign = Design()
+        return render(request, 'myguilds/myguilds.html', {
+                        'page': 'myguilds',
+                        'cuser': CurrentUser,
+                        'design': CurrentDesign,
+                    })
+
 
 
 class MainLogoutView(LogoutView):
