@@ -4,7 +4,8 @@ from django.db import models
 
 
 class BoardgamesBase(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=100)
+    rusname = models.CharField(max_length=100, blank=True)
     year = models.IntegerField()
     min_players = models.IntegerField(blank=True)
     max_players = models.IntegerField(blank=True)
