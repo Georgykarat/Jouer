@@ -190,22 +190,57 @@ main {
     width: 100%;
     border-radius: 20px;
     justify-content: space-between;
+    position: relative;
+    top: 0;
+    transition: .4s;
+    cursor: pointer;
 
+}
+.section__roadmap_ul:hover{
+    top: -5px;
+    transition: .4s;
 }
 .section__roadmap_ul-leftcnt {
     width: 60%;
     padding: 20px 10px;
     border-radius: 20px;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
 }
 .section__roadmap_ul-rightcnt {
     width: 30%;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 .h3__stage-header {
     font-size: 30px;
     font-family: "ComissionerB";
     color: white;
+    width: 100%;
+    padding-bottom: 15px;
 }
 .greycolor {
     color: #adadad;
     font-family: "ComissionerB";
+}
+.tag_inprogress {
+    font-size: 20px;
+    font-family: "ComissionerB";
+    color: #FFAE00;
+    width: 100%;
+    padding-bottom: 15px;
+}
+.section__roadmap_cnt {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 10px 0;
+}
+.section__roadmap_cnt-feature {
+    color: white;
 }
