@@ -49,14 +49,20 @@ h2 {
     min-width: 95%;
     margin-top: 40px;
 }
+.main__central_workspace-left-general {
+    display: flex;
+    width: 25%;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
 .main__central_workspace-left {
     display: flex;
     border-radius: 20px;
-    height: 180px;
-    width: 25%;
-    color: white;
+    height: 25vh;
+    width: 100%;
+    color: rgb(22, 22, 22);
     font-family: "ComissionerB";
-    text-align: start;
+    text-align: center;
     font-size: 20px;
     padding: 10px;
     cursor: pointer;
@@ -68,10 +74,23 @@ h2 {
     top: -5px;
     transition: .4s;
 }
+.main__central_workspace-left2 {
+    display: flex;
+    border-radius: 20px;
+    height: 35vh;
+    width: 100%;
+    color: rgb(22, 22, 22);
+    font-family: "ComissionerB";
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: azure;
+}
 .main__central_workspace-right {
     display: flex;
     border-radius: 20px;
-    height: 500px;
+    height: 70vh;
     width: 70%;
     color: black;
     font-family: "ComissionerB";
