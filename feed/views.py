@@ -176,7 +176,7 @@ def myguilds(request):
     if request.user.is_authenticated == True:
         CurrentUser = Person(request)
         CurrentDesign = Design()
-        return render(request, 'myguilds/myguilds.html', {
+        return render(request, 'guilds/myguilds.html', {
                         'page': 'myguilds',
                         'cuser': CurrentUser,
                         'design': CurrentDesign,

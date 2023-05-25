@@ -1,0 +1,83 @@
+* {
+    font-family: "ComissionerR";
+	margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+body, html {
+    margin: 0;
+    height: 0;
+    max-width: 100%;
+    width: 100%;
+}
+body {
+    background-color: #0c0c0c;
+}
+
+main {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.main__central_cnt {
+    display: flex;
+    width: 99%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+h2 {
+    margin-top: 50px;
+    display: block;
+    width: 100%;
+    font-family: "ComissionerR";
+    font-size: 30px;
+    color: azure;
+    text-align: center;
+    user-select: none;
+}
+.main__central_workspace {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    min-width: 95%;
+    margin-top: 40px;
+}
+.main__central_workspace-left {
+    display: flex;
+    border-radius: 20px;
+    height: 180px;
+    width: 25%;
+    color: white;
+    font-family: "ComissionerB";
+    text-align: start;
+    font-size: 20px;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+    top: 0px;
+    transition: .4s;
+}
+.main__central_workspace-left:hover {
+    top: -5px;
+    transition: .4s;
+}
+.main__central_workspace-right {
+    display: flex;
+    border-radius: 20px;
+    height: 500px;
+    width: 70%;
+    color: black;
+    font-family: "ComissionerB";
+    text-align: start;
+    font-size: 20px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: azure;
+}

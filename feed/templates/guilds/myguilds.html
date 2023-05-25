@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jouer Feed</title>
+    <script src="{% static 'frameworks/jQueryv3.6.0.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/fonts.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/myguilds.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'gstyles/g_scroll.css' %}">
+    <script src="{% static 'scripts/feed.js' %}"></script>
+</head>
+<body>
+  {% include "feed/feed_top.html" %}
+  <main>
+    <div class="main__central_cnt">
+      <h2>Ваши гильдии:</h2>
+    </div>
+    <div class="main__central_workspace">
+      <div class="main__central_workspace-left" style="background-color: {{design.color1}}">
+        Создать Гильдию
+      </div>
+      <div class="main__central_workspace-right">
+        
+      </div>
+    </div>
+  </main>
+</body>
+{% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/home_media.css' %}"> {% endcomment %}
+</html>
